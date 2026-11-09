@@ -1,0 +1,166 @@
+<!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI Operator Pack licence | AUTOMAIT</title><link rel="canonical" href="https://automait.au/skills/licence/"><style>
+:root{
+  /* Design system: ui-ux-pro-max "AUTOMAIT" — Minimalism & Swiss Style, green + action orange */
+  --color-primary:#047857;          /* darkened from #059669 so text/links pass 4.5:1 on white */
+  --color-primary-strong:#064E3B;   /* foreground */
+  --color-accent:#EA580C;           /* CTA */
+  --color-on-accent:#000000;
+  --color-accent-hover:#C2410C;
+  --color-bg:#F6FBF8;
+  --color-card:#FFFFFF;
+  --color-fg:#0B2A22;
+  --color-muted:#E8F1F3;
+  --color-muted-fg:#475569;
+  --color-border:#CFE6DA;
+  --color-tint:#ECFDF5;
+  --color-ring:#047857;
+  --font-head:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --font-body:'Open Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --radius:14px;
+  --space-1:8px;--space-2:16px;--space-3:24px;--space-4:32px;--space-5:48px;--space-6:64px;--space-7:96px;
+  --dur-fast:150ms;--dur:220ms;
+  --shadow:0 1px 2px rgba(6,78,59,.06),0 4px 16px rgba(6,78,59,.06);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;font:400 1rem/1.6 var(--font-body);color:var(--color-fg);background:var(--color-bg);-webkit-font-smoothing:antialiased}
+@media (min-width:768px){body{font-size:1.0625rem}}
+h1,h2,h3{font-family:var(--font-head);color:var(--color-primary-strong);line-height:1.15;letter-spacing:-.015em;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:var(--color-primary);text-underline-offset:3px;text-decoration-thickness:1.5px}
+a:hover{color:var(--color-primary-strong)}
+a,button{cursor:pointer;touch-action:manipulation}
+:focus-visible{outline:3px solid var(--color-ring);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:12px;top:-60px;background:var(--color-primary-strong);color:#fff;padding:12px 16px;border-radius:8px;z-index:10;text-decoration:none;font-weight:600}
+.skip:focus{top:12px;color:#fff}
+.w{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
+@media (min-width:768px){.w{padding:0 32px}}
+.icon{width:24px;height:24px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.icon-sm{width:20px;height:20px}
+
+/* Header */
+.site-header{position:sticky;top:0;z-index:5;background:rgba(246,251,248,.94);backdrop-filter:saturate(1.4) blur(8px);-webkit-backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--color-border)}
+.site-header .w{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);min-height:64px}
+.logo{font-family:var(--font-head);font-weight:700;letter-spacing:.1em;font-size:1.125rem;color:var(--color-primary-strong);text-decoration:none;display:inline-flex;align-items:center;gap:10px;min-height:44px}
+.logo-mark{width:28px;height:28px;border-radius:8px;background:var(--color-primary-strong);display:grid;place-items:center}
+.logo-mark svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.nav{display:flex;align-items:center;gap:var(--space-1)}
+.nav a.link{display:none;padding:10px 12px;min-height:44px;align-items:center;text-decoration:none;font-weight:600;color:var(--color-fg);border-radius:8px}
+.nav a.link:hover{background:var(--color-muted)}
+@media (min-width:768px){.nav a.link{display:inline-flex}}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:12px;font:600 1rem/1.2 var(--font-body);text-decoration:none;border:2px solid transparent;transition:background-color var(--dur) ease,border-color var(--dur) ease,color var(--dur) ease,box-shadow var(--dur) ease}
+.btn-cta{background:var(--color-accent);color:var(--color-on-accent)}
+.btn-cta:hover{background:var(--color-accent-hover);color:#fff}
+.btn-dark{background:var(--color-primary-strong);color:#fff}
+.btn-dark:hover{background:#032e23;color:#fff}
+.btn-ghost{background:transparent;color:var(--color-primary-strong);border-color:var(--color-primary-strong)}
+.btn-ghost:hover{background:var(--color-primary-strong);color:#fff}
+.btn-sm{min-height:44px;padding:8px 16px;font-size:.9375rem}
+.btn:active{box-shadow:inset 0 2px 0 rgba(0,0,0,.15)}
+.btn-block{width:100%}
+@media (min-width:560px){.btn-block{width:auto}}
+
+/* Hero */
+.hero{padding-top:var(--space-5);padding-bottom:var(--space-6)}
+@media (min-width:768px){.hero{padding-top:var(--space-7);padding-bottom:var(--space-7)}}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.875rem;color:var(--color-primary-strong);background:var(--color-tint);border:1px solid var(--color-border);padding:6px 12px;border-radius:12px;margin-bottom:var(--space-3)}
+.hero h1{font-size:clamp(2.125rem,7vw,3.75rem);max-width:15ch;margin-bottom:var(--space-3)}
+.hero .lede{font-size:1.125rem;color:#334155;max-width:60ch;margin-bottom:var(--space-4)}
+@media (min-width:768px){.hero .lede{font-size:1.25rem}}
+.hero-actions{display:flex;flex-direction:column;gap:12px}
+@media (min-width:560px){.hero-actions{flex-direction:row;flex-wrap:wrap;align-items:center}}
+.facts{list-style:none;padding:0;margin:var(--space-4) 0 0;display:grid;gap:12px}
+@media (min-width:768px){.facts{grid-template-columns:repeat(3,max-content);gap:var(--space-3)}}
+.facts li{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--color-primary-strong)}
+.facts .icon{color:var(--color-primary)}
+
+/* Sections */
+section{padding:var(--space-6) 0}
+@media (min-width:768px){section{padding:var(--space-7) 0}}
+.section-head{max-width:640px;margin-bottom:var(--space-4)}
+.section-head h2{font-size:clamp(1.625rem,4.5vw,2.375rem);margin-bottom:12px}
+.section-head p{color:var(--color-muted-fg);font-size:1.0625rem}
+.alt{background:var(--color-card);border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border)}
+
+.grid{display:grid;gap:var(--space-2)}
+@media (min-width:768px){.grid-3{grid-template-columns:repeat(3,1fr);gap:var(--space-3)}}
+
+.card{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-3);box-shadow:var(--shadow);display:flex;flex-direction:column}
+.alt .card{background:var(--color-bg)}
+.card-icon{width:48px;height:48px;border-radius:12px;background:var(--color-tint);color:var(--color-primary);display:grid;place-items:center;margin-bottom:var(--space-2)}
+.card h3{font-size:1.25rem;margin-bottom:6px}
+.price{font-family:var(--font-head);font-weight:700;font-size:1.125rem;color:var(--color-fg);margin-bottom:var(--space-2)}
+.price span{font-family:var(--font-body);font-weight:400;font-size:.9375rem;color:var(--color-muted-fg)}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.checks li{display:flex;gap:10px;align-items:flex-start;color:#334155}
+.checks .icon{color:var(--color-primary);margin-top:2px}
+.card .more{margin-top:auto;padding-top:var(--space-3)}
+
+/* Steps */
+.steps{list-style:none;padding:0;margin:0;counter-reset:s}
+.step{position:relative}
+.step-num{width:40px;height:40px;border-radius:50%;background:var(--color-primary-strong);color:#fff;font-family:var(--font-head);font-weight:700;display:grid;place-items:center;margin-bottom:var(--space-2)}
+.step p{color:#334155}
+
+/* Kit */
+.kit{display:grid;gap:var(--space-4);background:var(--color-primary-strong);color:#E6F4EE;border-radius:20px;padding:var(--space-4) var(--space-3)}
+@media (min-width:900px){.kit{grid-template-columns:1.4fr 1fr;padding:var(--space-5);align-items:start}}
+.kit h2{color:#fff;font-size:clamp(1.625rem,4.5vw,2.375rem);margin-bottom:12px}
+.kit .sub{color:#CDE7DC;margin-bottom:var(--space-3)}
+.kit .checks li{color:#E6F4EE}
+.kit .checks .icon{color:#6EE7B7}
+.buybox{background:#fff;color:var(--color-fg);border-radius:var(--radius);padding:var(--space-3);display:grid;gap:var(--space-2)}
+.buybox .big{font-family:var(--font-head);font-weight:700;font-size:2.5rem;line-height:1;color:var(--color-primary-strong)}
+.buybox .big small{font-size:1rem;font-weight:600;color:var(--color-muted-fg);margin-left:6px}
+.buybox .meta{list-style:none;padding:0;margin:0;display:grid;gap:8px;color:#334155;font-size:.9375rem}
+.buybox .meta li{display:flex;gap:8px;align-items:center}
+.buybox .meta .icon{color:var(--color-primary)}
+.buybox .btn{width:100%}
+.buybox .fine{font-size:.875rem;color:var(--color-muted-fg)}
+
+/* Trust note */
+.note{display:grid;gap:var(--space-3);background:var(--color-tint);border:1px solid var(--color-border);border-radius:20px;padding:var(--space-4) var(--space-3)}
+@media (min-width:768px){.note{grid-template-columns:auto 1fr;padding:var(--space-5)}}
+.note .card-icon{background:#fff;margin:0}
+.note h2{font-size:clamp(1.5rem,4vw,2rem);margin-bottom:12px}
+.note p{color:#334155;max-width:65ch}
+
+/* Final CTA */
+.final{text-align:center}
+.final h2{font-size:clamp(1.75rem,5vw,2.625rem);margin-bottom:12px}
+.final p{color:var(--color-muted-fg);max-width:52ch;margin:0 auto var(--space-4)}
+.final .hero-actions{justify-content:center}
+
+/* Footer */
+footer{border-top:1px solid var(--color-border);padding:var(--space-5) 0 calc(var(--space-5) + env(safe-area-inset-bottom));color:var(--color-muted-fg);font-size:.9375rem;background:var(--color-card)}
+footer .w{display:grid;gap:8px}
+footer a{display:inline-flex;align-items:center;min-height:44px}
+.grid-note{margin-top:var(--space-3);color:var(--color-muted-fg);font-size:.9375rem;max-width:72ch}
+.buybox .fine a{color:var(--color-primary)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:0ms!important;animation-duration:0ms!important}
+}
+</style></head><body><main><section><div class="w"><p><a href="/skills/">← AI Operator Pack</a></p><h1>AI Operator Pack licence</h1><p>This is the same text as LICENSE.md inside the pack.</p><pre style="white-space:pre-wrap;font:15px/1.6 ui-monospace,monospace"># AI Operator Pack — Commercial Licence
+
+Licensor: AUTOMAIT (ABN 82 801 716 831), https://automait.au
+Version 1.0 — applies to AI Operator Pack v1.x
+
+1. **Grant.** When you buy, you get a non-exclusive, non-transferable licence for **one person or one organisation** (the &quot;Licensee&quot;) to install, use and modify the skills in this pack, on any number of machines and agents operated by or for the Licensee, including work the Licensee does for its own clients.
+2. **You may:** edit the skills; combine them with your own; keep private modified copies; use their outputs (documents, code, plans) for any purpose.
+3. **You may not:** resell, sublicense, share publicly, upload to public repositories, skill marketplaces or catalogues, or give away the skills or substantial parts of them (modified or not); or include them in a product, template or course sold or given to third parties. Installing the skills on an agent you operate for a client is allowed; handing the skill files to the client to keep or use without you is not.
+4. **Ownership.** AUTOMAIT keeps copyright in the pack. Third-party names (Hermes Agent, Claude Code, Stripe, GitHub and others) belong to their owners and are used only to describe compatibility. AUTOMAIT is not affiliated with or endorsed by them.
+5. **Nature of the content.** The skills are instructions that an AI agent follows. They describe one operation&#x27;s practices as at the version date. They are general information — not legal, tax, financial or security advice — and you are responsible for what your agent does with the access you give it. Review each skill before use.
+6. **Your consumer rights.** Nothing in this licence excludes, restricts or modifies any right or remedy you have under the Australian Consumer Law or any other law that cannot be excluded.
+7. **Liability.** This clause is subject to clause 6.
+   (a) If the pack is of a kind ordinarily acquired for personal, domestic or household use, nothing in this clause limits your rights or remedies under the Australian Consumer Law.
+   (b) Otherwise, where the Australian Consumer Law allows (section 64A), AUTOMAIT&#x27;s liability for failing to comply with a consumer guarantee is limited, at AUTOMAIT&#x27;s choice, to supplying the pack again or paying the cost of having it supplied again.
+   (c) AUTOMAIT isn&#x27;t responsible for loss caused by actions your agent takes with the access you give it, except to the extent the loss is caused by AUTOMAIT&#x27;s failure to take reasonable care or a failure to comply with a consumer guarantee.
+8. **Termination.** This licence ends automatically if you breach clause 3. On termination, delete all copies.
+9. **Law.** This licence is governed by the laws of Victoria, Australia. If anything in this licence conflicts with our Terms of Sale (https://automait.au/terms/), the Terms of Sale apply.
+
+Questions: hello@automait.au
+</pre><p class="fine">AUTOMAIT · ABN 82 801 716 831 · <a href="mailto:hello@automait.au">hello@automait.au</a> · <a href="/terms/">Terms</a> · <a href="/privacy/">Privacy</a></p></div></section></main></body></html>

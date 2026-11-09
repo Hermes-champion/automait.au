@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://automait.au/sitemap.xml

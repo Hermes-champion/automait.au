@@ -1,0 +1,2 @@
+# automait.au
+AUTOMAIT website
