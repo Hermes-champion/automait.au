@@ -2,351 +2,678 @@
 <html lang="en-AU">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AUTOMAIT — AI automation for Australian small business</title>
-<meta name="description" content="AUTOMAIT sets up AI enquiry responders, booking flows and review automation for Australian small businesses. Fixed-price written quotes, delivered by email.">
-<meta name="theme-color" content="#064E3B">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AUTOMAIT | Stop losing jobs to slow replies</title>
+<meta name="description" content="AUTOMAIT sets up AI enquiry replies, booking and follow-up, and Google review requests for Australian tradies and small service businesses. Fixed one-off prices, or DIY with the $29 AI Front Desk Kit.">
+<meta name="theme-color" content="#0B1B2E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B1B2E'/%3E%3Cpath d='M8 9.5h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-9l-5 4v-4H8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z' fill='%23FFD23F'/%3E%3Cpath d='m11.5 15.5 3 3 6-6' fill='none' stroke='%230B1B2E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Poppins:wght@600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet">
 <style>
 :root{
-  /* Design system: ui-ux-pro-max "AUTOMAIT" — Minimalism & Swiss Style, green + action orange */
-  --color-primary:#047857;          /* darkened from #059669 so text/links pass 4.5:1 on white */
-  --color-primary-strong:#064E3B;   /* foreground */
-  --color-accent:#EA580C;           /* CTA */
-  --color-on-accent:#000000;
-  --color-accent-hover:#C2410C;
-  --color-bg:#F6FBF8;
-  --color-card:#FFFFFF;
-  --color-fg:#0B2A22;
-  --color-muted:#E8F1F3;
-  --color-muted-fg:#475569;
-  --color-border:#CFE6DA;
-  --color-tint:#ECFDF5;
-  --color-ring:#047857;
-  --font-head:'Poppins',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --font-body:'Open Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --radius:14px;
-  --space-1:8px;--space-2:16px;--space-3:24px;--space-4:32px;--space-5:48px;--space-6:64px;--space-7:96px;
-  --dur-fast:150ms;--dur:220ms;
-  --shadow:0 1px 2px rgba(6,78,59,.06),0 4px 16px rgba(6,78,59,.06);
+  --ink:#0B1B2E;--ink-2:#132A47;--ink-3:#1C3a5f;
+  --hivis:#FFD23F;--hivis-deep:#F2B705;
+  --paper:#F3F5F8;--surface:#fff;--line:#D5DCE6;
+  --text:#0B1B2E;--muted:#4A586B;
+  --on-ink:#EAF0F7;--on-ink-muted:#A9B8CC;
+  --go:#0E7A5B;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --body:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --r-chip:6px;--r-btn:12px;--r-card:20px;
+  --gut:20px;--sec:72px;
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
+@media (min-width:900px){:root{--gut:40px;--sec:120px}}
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;font:400 1rem/1.6 var(--font-body);color:var(--color-fg);background:var(--color-bg);-webkit-font-smoothing:antialiased}
-@media (min-width:768px){body{font-size:1.0625rem}}
-h1,h2,h3{font-family:var(--font-head);color:var(--color-primary-strong);line-height:1.15;letter-spacing:-.015em;margin:0;text-wrap:balance}
-p{margin:0}
-a{color:var(--color-primary);text-underline-offset:3px;text-decoration-thickness:1.5px}
-a:hover{color:var(--color-primary-strong)}
-a,button{cursor:pointer;touch-action:manipulation}
-:focus-visible{outline:3px solid var(--color-ring);outline-offset:3px;border-radius:6px}
-.skip{position:absolute;left:12px;top:-60px;background:var(--color-primary-strong);color:#fff;padding:12px 16px;border-radius:8px;z-index:10;text-decoration:none;font-weight:600}
-.skip:focus{top:12px;color:#fff}
-.w{width:100%;max-width:1120px;margin:0 auto;padding:0 20px}
-@media (min-width:768px){.w{padding:0 32px}}
-.icon{width:24px;height:24px;flex:none;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.icon-sm{width:20px;height:20px}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--paper);color:var(--text);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+h1,h2,h3{font-family:var(--display);margin:0;font-weight:750;letter-spacing:-.02em;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+ul{margin:0;padding:0}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1.5px}
+a,button,summary{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:8px}
+.dark :focus-visible,.dark:focus-visible{outline-color:var(--hivis)}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:12px;top:-80px;z-index:50;background:var(--hivis);color:var(--ink);padding:12px 16px;border-radius:var(--r-btn);font-weight:700;text-decoration:none}
+.skip:focus{top:12px}
+.w{max-width:1200px;margin:0 auto;padding:0 var(--gut)}
+.i{width:22px;height:22px;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* Header */
-.site-header{position:sticky;top:0;z-index:5;background:rgba(246,251,248,.94);backdrop-filter:saturate(1.4) blur(8px);-webkit-backdrop-filter:saturate(1.4) blur(8px);border-bottom:1px solid var(--color-border)}
-.site-header .w{display:flex;align-items:center;justify-content:space-between;gap:var(--space-2);min-height:64px}
-.logo{font-family:var(--font-head);font-weight:700;letter-spacing:.1em;font-size:1.125rem;color:var(--color-primary-strong);text-decoration:none;display:inline-flex;align-items:center;gap:10px;min-height:44px}
-.logo-mark{width:28px;height:28px;border-radius:8px;background:var(--color-primary-strong);display:grid;place-items:center}
-.logo-mark svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.nav{display:flex;align-items:center;gap:var(--space-1)}
-.nav a.link{display:none;padding:10px 12px;min-height:44px;align-items:center;text-decoration:none;font-weight:600;color:var(--color-fg);border-radius:8px}
-.nav a.link:hover{background:var(--color-muted)}
-@media (min-width:768px){.nav a.link{display:inline-flex}}
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:14px 22px;border-radius:var(--r-btn);font:700 1.0625rem/1.2 var(--body);text-decoration:none;border:2px solid transparent;transition:background-color .18s var(--ease),transform .18s var(--ease),border-color .18s var(--ease)}
+.btn:active{transform:translateY(1px)}
+.btn-go{background:var(--hivis);color:var(--ink);border-color:var(--ink)}
+.btn-go:hover{background:var(--hivis-deep)}
+.dark .btn-go{border-color:var(--hivis)}
+.dark .btn-go:hover{border-color:var(--hivis-deep)}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:#fff}
+.dark .btn-line{color:var(--on-ink);border-color:rgba(234,240,247,.45)}
+.dark .btn-line:hover{background:var(--on-ink);color:var(--ink);border-color:var(--on-ink)}
+.btn .i{width:20px;height:20px}
 
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 22px;border-radius:12px;font:600 1rem/1.2 var(--font-body);text-decoration:none;border:2px solid transparent;transition:background-color var(--dur) ease,border-color var(--dur) ease,color var(--dur) ease,box-shadow var(--dur) ease}
-.btn-cta{background:var(--color-accent);color:var(--color-on-accent)}
-.btn-cta:hover{background:var(--color-accent-hover);color:#fff}
-.btn-dark{background:var(--color-primary-strong);color:#fff}
-.btn-dark:hover{background:#032e23;color:#fff}
-.btn-ghost{background:transparent;color:var(--color-primary-strong);border-color:var(--color-primary-strong)}
-.btn-ghost:hover{background:var(--color-primary-strong);color:#fff}
-.btn-sm{min-height:44px;padding:8px 16px;font-size:.9375rem}
-.btn:active{box-shadow:inset 0 2px 0 rgba(0,0,0,.15)}
-.btn-block{width:100%}
-@media (min-width:560px){.btn-block{width:auto}}
+/* ---------- header ---------- */
+.dark{background:var(--ink);color:var(--on-ink)}
+.top{position:sticky;top:0;z-index:20;background:rgba(11,27,46,.92);-webkit-backdrop-filter:blur(10px) saturate(1.3);backdrop-filter:blur(10px) saturate(1.3);border-bottom:1px solid rgba(234,240,247,.08)}
+.top .w{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:68px}
+.brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;min-height:44px;color:var(--on-ink)}
+.brand svg.mark{width:34px;height:34px;flex:none}
+.word{font:800 1.3rem/1 var(--display);letter-spacing:.02em}
+.word b{font-weight:800;background:linear-gradient(var(--hivis),var(--hivis)) 0 100%/100% 3px no-repeat;padding-bottom:3px}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a.l{display:none;align-items:center;min-height:44px;padding:0 14px;border-radius:10px;text-decoration:none;font-weight:600;font-size:.97rem;color:var(--on-ink-muted)}
+.nav a.l:hover{color:var(--on-ink);background:rgba(234,240,247,.07)}
+.nav .btn{min-height:44px;padding:10px 16px;font-size:.97rem}
+@media (min-width:900px){.nav a.l{display:inline-flex}}
 
-/* Hero */
-.hero{padding-top:var(--space-5);padding-bottom:var(--space-6)}
-@media (min-width:768px){.hero{padding-top:var(--space-7);padding-bottom:var(--space-7)}}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:.875rem;color:var(--color-primary-strong);background:var(--color-tint);border:1px solid var(--color-border);padding:6px 12px;border-radius:12px;margin-bottom:var(--space-3)}
-.hero h1{font-size:clamp(2.125rem,7vw,3.75rem);max-width:15ch;margin-bottom:var(--space-3)}
-.hero .lede{font-size:1.125rem;color:#334155;max-width:60ch;margin-bottom:var(--space-4)}
-@media (min-width:768px){.hero .lede{font-size:1.25rem}}
-.hero-actions{display:flex;flex-direction:column;gap:12px}
-@media (min-width:560px){.hero-actions{flex-direction:row;flex-wrap:wrap;align-items:center}}
-.facts{list-style:none;padding:0;margin:var(--space-4) 0 0;display:grid;gap:12px}
-@media (min-width:768px){.facts{grid-template-columns:repeat(3,max-content);gap:var(--space-3)}}
-.facts li{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--color-primary-strong)}
-.facts .icon{color:var(--color-primary)}
-
-/* Sections */
-section{padding:var(--space-6) 0}
-@media (min-width:768px){section{padding:var(--space-7) 0}}
-.section-head{max-width:640px;margin-bottom:var(--space-4)}
-.section-head h2{font-size:clamp(1.625rem,4.5vw,2.375rem);margin-bottom:12px}
-.section-head p{color:var(--color-muted-fg);font-size:1.0625rem}
-.alt{background:var(--color-card);border-top:1px solid var(--color-border);border-bottom:1px solid var(--color-border)}
-
-.grid{display:grid;gap:var(--space-2)}
-@media (min-width:768px){.grid-3{grid-template-columns:repeat(3,1fr);gap:var(--space-3)}}
-
-.card{background:var(--color-card);border:1px solid var(--color-border);border-radius:var(--radius);padding:var(--space-3);box-shadow:var(--shadow);display:flex;flex-direction:column}
-.alt .card{background:var(--color-bg)}
-.card-icon{width:48px;height:48px;border-radius:12px;background:var(--color-tint);color:var(--color-primary);display:grid;place-items:center;margin-bottom:var(--space-2)}
-.card h3{font-size:1.25rem;margin-bottom:6px}
-.price{font-family:var(--font-head);font-weight:700;font-size:1.125rem;color:var(--color-fg);margin-bottom:var(--space-2)}
-.price span{font-family:var(--font-body);font-weight:400;font-size:.9375rem;color:var(--color-muted-fg)}
-.checks{list-style:none;padding:0;margin:0;display:grid;gap:10px}
-.checks li{display:flex;gap:10px;align-items:flex-start;color:#334155}
-.checks .icon{color:var(--color-primary);margin-top:2px}
-.card .more{margin-top:auto;padding-top:var(--space-3)}
-
-/* Steps */
-.steps{list-style:none;padding:0;margin:0;counter-reset:s}
-.step{position:relative}
-.step-num{width:40px;height:40px;border-radius:50%;background:var(--color-primary-strong);color:#fff;font-family:var(--font-head);font-weight:700;display:grid;place-items:center;margin-bottom:var(--space-2)}
-.step p{color:#334155}
-
-/* Kit */
-.kit{display:grid;gap:var(--space-4);background:var(--color-primary-strong);color:#E6F4EE;border-radius:20px;padding:var(--space-4) var(--space-3)}
-@media (min-width:900px){.kit{grid-template-columns:1.4fr 1fr;padding:var(--space-5);align-items:start}}
-.kit h2{color:#fff;font-size:clamp(1.625rem,4.5vw,2.375rem);margin-bottom:12px}
-.kit .sub{color:#CDE7DC;margin-bottom:var(--space-3)}
-.kit .checks li{color:#E6F4EE}
-.kit .checks .icon{color:#6EE7B7}
-.buybox{background:#fff;color:var(--color-fg);border-radius:var(--radius);padding:var(--space-3);display:grid;gap:var(--space-2)}
-.buybox .big{font-family:var(--font-head);font-weight:700;font-size:2.5rem;line-height:1;color:var(--color-primary-strong)}
-.buybox .big small{font-size:1rem;font-weight:600;color:var(--color-muted-fg);margin-left:6px}
-.buybox .meta{list-style:none;padding:0;margin:0;display:grid;gap:8px;color:#334155;font-size:.9375rem}
-.buybox .meta li{display:flex;gap:8px;align-items:center}
-.buybox .meta .icon{color:var(--color-primary)}
-.buybox .btn{width:100%}
-.buybox .fine{font-size:.875rem;color:var(--color-muted-fg)}
-
-/* Trust note */
-.note{display:grid;gap:var(--space-3);background:var(--color-tint);border:1px solid var(--color-border);border-radius:20px;padding:var(--space-4) var(--space-3)}
-@media (min-width:768px){.note{grid-template-columns:auto 1fr;padding:var(--space-5)}}
-.note .card-icon{background:#fff;margin:0}
-.note h2{font-size:clamp(1.5rem,4vw,2rem);margin-bottom:12px}
-.note p{color:#334155;max-width:65ch}
-
-/* Final CTA */
-.final{text-align:center}
-.final h2{font-size:clamp(1.75rem,5vw,2.625rem);margin-bottom:12px}
-.final p{color:var(--color-muted-fg);max-width:52ch;margin:0 auto var(--space-4)}
-.final .hero-actions{justify-content:center}
-
-/* Footer */
-footer{border-top:1px solid var(--color-border);padding:var(--space-5) 0 calc(var(--space-5) + env(safe-area-inset-bottom));color:var(--color-muted-fg);font-size:.9375rem;background:var(--color-card)}
-footer .w{display:grid;gap:8px}
-footer a{display:inline-flex;align-items:center;min-height:44px}
-.grid-note{margin-top:var(--space-3);color:var(--color-muted-fg);font-size:.9375rem;max-width:72ch}
-.buybox .fine a{color:var(--color-primary)}
-
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{transition-duration:0ms!important;animation-duration:0ms!important}
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:44px 0 0}
+.hero::before{content:"";position:absolute;inset:-40% -20% auto auto;width:900px;height:900px;background:radial-gradient(closest-side,rgba(255,210,63,.13),transparent 70%);pointer-events:none}
+.hero .w{position:relative;display:grid;gap:44px}
+.kicker{display:inline-flex;align-items:baseline;gap:10px;font-weight:600;font-size:.97rem;color:var(--on-ink-muted);margin-bottom:20px}
+.kicker .dot{flex:none;transform:translateY(-1px);width:8px;height:8px;border-radius:50%;background:var(--hivis);box-shadow:0 0 0 4px rgba(255,210,63,.18)}
+.hero h1{font-size:clamp(2.55rem,10.6vw,4.9rem);line-height:1;letter-spacing:-.028em;font-weight:800;max-width:12ch}
+.lede{margin-top:22px;font-size:clamp(1.125rem,2.2vw,1.3rem);line-height:1.55;color:var(--on-ink-muted);max-width:40ch}
+.lede strong{color:var(--on-ink);font-weight:600}
+.cta-row{display:flex;flex-direction:column;gap:12px;margin-top:30px}
+.cta-row .btn{width:100%}
+.reassure{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;list-style:none;font-size:.95rem;color:var(--on-ink-muted)}
+.reassure li{display:inline-flex;align-items:center;gap:8px}
+.reassure .i{width:18px;height:18px;color:var(--hivis)}
+@media (min-width:560px){.cta-row{flex-direction:row;flex-wrap:wrap}.cta-row .btn{width:auto}}
+@media (min-width:980px){
+  .hero{padding-top:84px}
+  .hero .w{grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);align-items:end;gap:56px}
+  .hero-copy{padding-bottom:96px}
+  .phone{height:600px;width:340px}
 }
+
+/* phone */
+.stage{position:relative;display:flex;justify-content:center;padding-top:8px}
+.tag{position:absolute;z-index:3;top:0;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;gap:6px;background:var(--surface);color:var(--ink);font-size:.8rem;font-weight:700;padding:6px 10px;white-space:nowrap;border-radius:var(--r-chip);box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.tag .i{width:14px;height:14px}
+.phone{position:relative;width:min(100%,330px);height:556px;background:var(--ink-2);border-radius:46px 46px 0 0;padding:12px 12px 0;box-shadow:0 0 0 1px rgba(234,240,247,.12),0 40px 80px -20px rgba(0,0,0,.6);margin-top:44px}
+.screen{height:100%;border-radius:36px 36px 0 0;background:#F6F8FB;overflow:hidden;display:flex;flex-direction:column}
+.notch{width:96px;height:26px;border-radius:14px;background:var(--ink-2);margin:8px auto 0}
+.chat-top{display:flex;align-items:center;gap:10px;padding:10px 16px 12px;border-bottom:1px solid var(--line);color:var(--ink)}
+.avatar{width:34px;height:34px;border-radius:50%;background:#D9E6F5;color:var(--ink);display:grid;place-items:center;font:800 .8rem/1 var(--display)}
+.chat-top b{display:block;font-size:.92rem;line-height:1.2}
+.chat-top span{font-size:.75rem;color:var(--muted)}
+.thread{flex:1;display:flex;flex-direction:column;gap:9px;padding:14px 14px;font-size:.87rem;line-height:1.42;color:var(--ink)}
+.time{align-self:center;font-size:.72rem;color:var(--muted);font-weight:600}
+.b{max-width:84%;padding:9px 12px;border-radius:18px}
+.b.in{align-self:flex-start;background:#E4E9F0;border-bottom-left-radius:6px}
+.b.out{align-self:flex-end;background:var(--ink);color:var(--on-ink);border-bottom-right-radius:6px}
+.pic{display:grid;gap:6px}.thumb{display:block;width:104px;height:58px;border-radius:12px;background:linear-gradient(160deg,#9fb2c8,#5d7590 60%,#3e526a);position:relative;overflow:hidden}.thumb::after{content:"";position:absolute;left:36px;top:9px;width:32px;height:42px;border-radius:8px 8px 4px 4px;background:#dfe6ee;box-shadow:inset 0 -10px 0 #c3ccd7}
+.meta{align-self:flex-end;display:flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;color:var(--go);margin-top:-4px}
+.meta .i{width:14px;height:14px;stroke-width:2.6}
+.ping{align-self:stretch;display:flex;gap:10px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--hivis);border-radius:12px;padding:10px 12px;font-size:.8rem;box-shadow:0 8px 20px -10px rgba(11,27,46,.35)}
+.ping .i{width:18px;height:18px;margin-top:1px;color:var(--ink)}
+.ping b{display:block}
+.try{display:none;align-items:center;gap:10px;margin-top:18px;text-align:left;min-height:44px;padding:0;border:0;background:none;color:var(--on-ink);font:600 1rem/1.3 var(--body);text-decoration:underline;text-decoration-color:var(--hivis);text-decoration-thickness:2px;text-underline-offset:5px}
+.try:hover{color:var(--hivis)}
+.try .i{width:20px;height:20px;color:var(--hivis)}
+.js .try{display:inline-flex}
+.tape{height:10px;background:repeating-linear-gradient(-45deg,var(--hivis) 0 14px,var(--ink) 14px 28px)}
+
+@media (prefers-reduced-motion:no-preference){
+  .seq>*{animation:rise .5s var(--ease) both}
+  .seq>:nth-child(2){animation-delay:.35s}
+  .seq>:nth-child(3){animation-delay:1.25s}
+  .seq>:nth-child(4){animation-delay:1.35s}
+  .seq>:nth-child(5){animation-delay:2.1s}
+  .seq>:nth-child(6){animation-delay:2.8s}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+
+/* ---------- sections ---------- */
+section{padding:var(--sec) 0}
+.head{max-width:680px;margin-bottom:44px}
+.head h2{font-size:clamp(1.9rem,5.4vw,3rem);line-height:1.04;letter-spacing:-.03em}
+.head p{margin-top:16px;color:var(--muted);font-size:1.125rem;max-width:56ch}
+.dark .head p{color:var(--on-ink-muted)}
+
+/* problem */
+.compare{display:grid;gap:16px}
+@media (min-width:860px){.compare{grid-template-columns:1fr 1fr;gap:24px}}
+.col{border-radius:var(--r-card);padding:22px 18px;border:1px solid var(--line);background:var(--surface)}
+.col h3{font-size:1.2rem;display:flex;align-items:center;gap:10px;margin-bottom:18px}
+.col h3 .i{width:22px;height:22px}
+.col.bad h3 .i{color:#B3261E}
+.col.good{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.col.good h3 .i{color:var(--hivis)}
+.events{list-style:none;display:grid;gap:0}
+.events li{display:grid;grid-template-columns:74px 1fr;gap:10px;padding:12px 0;line-height:1.45;border-top:1px solid var(--line);font-size:1rem}
+.col.good .events li{border-top-color:rgba(234,240,247,.12)}
+.events time{white-space:nowrap;font-weight:700;font-variant-numeric:tabular-nums;color:var(--muted);font-size:.95rem}
+.col.good .events time{color:var(--on-ink-muted)}
+.events em{font-style:normal;font-weight:700}
+.col.bad .events em{color:#B3261E}
+.col.good .events em{color:var(--hivis)}
+.fine{margin-top:16px;font-size:.92rem;color:var(--muted)}
+
+/* services */
+.svc{display:grid;gap:16px}
+@media (min-width:900px){.svc{grid-template-columns:1.15fr 1fr 1fr;gap:20px;align-items:stretch}}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:28px 24px;display:flex;flex-direction:column}
+.card .ch{display:flex;align-items:center;gap:14px}
+.card .ic{width:44px;height:44px;flex:none;border-radius:12px;background:var(--paper);display:grid;place-items:center;color:var(--ink)}
+.card h3{font-size:1.35rem;line-height:1.15}
+@media (min-width:900px){.card .ch{flex-direction:column;align-items:flex-start;gap:20px}.card .ic{width:48px;height:48px}}
+.price{margin-top:10px;display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.price .from{font-size:.95rem;color:var(--muted)}
+.price .amt{font:800 2.2rem/1 var(--display);letter-spacing:-.03em}
+.price .unit{font-size:.95rem;color:var(--muted)}
+.ticks{list-style:none;display:grid;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid var(--line)}
+.ticks li{display:grid;grid-template-columns:22px 1fr;gap:10px;line-height:1.45}
+.ticks .i{width:20px;height:20px;color:var(--go);margin-top:2px;stroke-width:2.4}
+.card.lead{border:2px solid var(--ink);box-shadow:8px 8px 0 var(--hivis)}
+.card.lead .ic{background:var(--hivis)}
+.badge{position:absolute;top:-13px;left:22px;background:var(--ink);color:var(--hivis);font-weight:700;font-size:.82rem;padding:4px 10px;border-radius:var(--r-chip)}
+.svc-note{margin-top:28px;display:flex;gap:12px;align-items:flex-start;max-width:820px;color:var(--muted);font-size:.97rem}
+.svc-note .i{color:var(--ink);margin-top:2px}
+.after{margin-top:32px}
+
+/* steps */
+.steps-sec{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.steps{list-style:none;display:grid;gap:0;counter-reset:s}
+@media (min-width:900px){.steps{grid-template-columns:repeat(3,1fr);gap:40px}}
+.steps li{counter-increment:s;display:grid;grid-template-columns:56px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--line)}
+@media (min-width:900px){.steps li{grid-template-columns:1fr;padding:28px 0 0;border-top:3px solid var(--ink)}}
+.steps li::before{content:counter(s);font:800 2.6rem/1 var(--display);color:var(--ink);letter-spacing:-.04em}
+@media (min-width:900px){.steps li::before{font-size:3.6rem}}
+.steps h3{font-size:1.3rem;margin-bottom:6px}
+.steps p{color:var(--muted)}
+
+/* kit */
+.kit{display:grid;gap:36px;background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:28px 22px;overflow:hidden;position:relative}
+@media (min-width:900px){.kit{grid-template-columns:.8fr 1.2fr;gap:56px;padding:56px}}
+.cover-wrap{display:grid;place-items:center;background:var(--ink);border-radius:20px;padding:28px 20px 36px;position:relative;overflow:hidden}
+.cover-wrap::after{content:"";position:absolute;left:0;right:0;bottom:0;height:10px;background:repeating-linear-gradient(-45deg,var(--hivis) 0 14px,var(--ink) 14px 28px)}
+.cover{position:relative;width:clamp(150px,40vw,210px);aspect-ratio:210/297;background:var(--paper);border-radius:6px;padding:20px 16px;display:flex;flex-direction:column;box-shadow:12px 12px 0 -1px var(--ink-3),12px 12px 0 0 rgba(234,240,247,.25),0 30px 50px -20px rgba(0,0,0,.7);transform:rotate(-3deg)}
+.cover small{font-size:.62rem;font-weight:700;color:var(--muted)}
+.cover strong{font:800 1.45rem/1 var(--display);letter-spacing:-.03em;color:var(--ink);margin-top:10px}
+.cover .bar{height:6px;width:46px;background:var(--hivis);margin:14px 0}
+.cover .ln{height:5px;border-radius:3px;background:var(--line);margin-top:7px}
+.cover .ft{margin-top:auto;display:flex;align-items:center;gap:6px;font:800 .62rem/1 var(--display);color:var(--ink)}
+.cover .ft svg{width:16px;height:16px}
+.kit h2{font-size:clamp(1.9rem,5vw,2.8rem);line-height:1.04;letter-spacing:-.03em}
+.kit .sub{margin-top:12px;color:var(--muted);font-size:1.1rem}
+.kit .ticks{border-top:0;padding-top:0;margin-top:24px}
+@media (min-width:640px){.kit .ticks{grid-template-columns:1fr 1fr;gap:12px 24px}}
+.buy{margin-top:28px;padding-top:24px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px}
+.buy .amt{font:800 3rem/1 var(--display);letter-spacing:-.04em}
+.buy .amt span{font:600 1rem/1 var(--body);color:var(--muted);letter-spacing:0;margin-left:6px}
+.buy .btn{flex:1 1 220px}
+@media (min-width:640px){.buy .btn{flex:0 0 auto}}
+
+/* AI note */
+.ai{display:grid;gap:20px;align-items:start}
+@media (min-width:900px){.ai{grid-template-columns:auto 1fr;gap:40px}}
+.ai .big{width:72px;height:72px;border-radius:20px;background:var(--ink);display:grid;place-items:center}
+.ai .big svg{width:44px;height:44px}
+.ai h2{font-size:clamp(1.7rem,4.4vw,2.4rem);line-height:1.08;letter-spacing:-.03em}
+.ai p{margin-top:14px;max-width:66ch;color:var(--muted);font-size:1.08rem}
+.ai p strong{color:var(--ink)}
+
+/* FAQ */
+.faq-sec{background:var(--surface);border-top:1px solid var(--line)}
+.faq-grid{display:grid;gap:28px}
+@media (min-width:900px){.faq-grid{grid-template-columns:.75fr 1.25fr;gap:64px}.faq-grid .head{position:sticky;top:110px;align-self:start}}
+.faq{border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:64px;padding:16px 0;font:700 1.12rem/1.35 var(--body)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .pm{position:relative;flex:none;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--line)}
+.faq summary .pm::before,.faq summary .pm::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;background:var(--ink);transform:translate(-50%,-50%);transition:transform .2s var(--ease)}
+.faq summary .pm::after{transform:translate(-50%,-50%) rotate(90deg)}
+.faq details[open] summary .pm::after{transform:translate(-50%,-50%) rotate(0)}
+.faq summary:hover .pm{border-color:var(--ink)}
+.faq .ans{padding:0 0 22px;color:var(--muted);max-width:62ch}
+.faq .ans p+p{margin-top:10px}
+.faq .ans a{color:var(--ink);font-weight:600}
+
+/* final */
+.final{padding:var(--sec) 0 calc(var(--sec) - 16px);text-align:left}
+.final h2{font-size:clamp(2.2rem,7vw,4rem);line-height:1;letter-spacing:-.04em;max-width:14ch}
+.final p{margin-top:18px;color:var(--on-ink-muted);font-size:1.15rem;max-width:44ch}
+.mail{display:inline-block;margin-top:22px;font-weight:600;color:var(--on-ink);min-height:44px;padding-top:10px}
+footer{border-top:1px solid rgba(234,240,247,.1);padding:32px 0 calc(110px + env(safe-area-inset-bottom));font-size:.95rem;color:var(--on-ink-muted)}
+footer .w{display:grid;gap:14px}
+@media (min-width:900px){footer .w{grid-template-columns:1fr auto;align-items:center}footer{padding-bottom:40px}}
+footer p{line-height:1.6}
+footer nav{display:flex;gap:4px;flex-wrap:wrap}
+footer nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 10px;border-radius:8px;color:var(--on-ink)}
+footer nav a:first-child{padding-left:0}
+
+/* ---------- demo chat ---------- */
+.launch{position:fixed;z-index:40;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:8px 20px 8px 8px;border-radius:999px;border:2px solid var(--ink);background:var(--hivis);color:var(--ink);font:700 1rem/1.1 var(--body);box-shadow:0 14px 34px -10px rgba(11,27,46,.55);transition:transform .2s var(--ease),background-color .2s}
+.launch:hover{background:var(--hivis-deep)}
+.launch .lm{width:38px;height:38px;border-radius:50%;background:var(--ink);display:grid;place-items:center;color:var(--hivis)}
+.launch .lm .i{width:20px;height:20px}
+.launch small{display:block;font-size:.72rem;font-weight:700;opacity:.8}
+@media (max-width:559px){.launch{padding:6px 16px 6px 6px;min-height:52px;font-size:.95rem}.launch .lm{width:36px;height:36px}.launch .long{display:none}}
+.launch[hidden],.panel[hidden]{display:none}
+.launch.away{opacity:0;transform:translateY(24px);pointer-events:none;visibility:hidden}
+.launch{transition:opacity .25s,transform .25s var(--ease),visibility .25s,background-color .2s}
+.panel{position:fixed;z-index:45;left:8px;right:8px;bottom:8px;height:min(640px,calc(100dvh - 16px));display:flex;flex-direction:column;background:var(--surface);color:var(--ink);border-radius:24px;box-shadow:0 0 0 1px rgba(11,27,46,.08),0 30px 80px -10px rgba(11,27,46,.55);overflow:hidden}
+@media (min-width:560px){.panel{left:auto;right:20px;bottom:20px;width:400px;height:min(660px,calc(100dvh - 40px))}}
+@media (prefers-reduced-motion:no-preference){.panel.on{animation:pop .24s var(--ease)}@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}}
+.p-head{display:flex;align-items:center;gap:12px;padding:14px 10px 14px 16px;background:var(--ink);color:var(--on-ink)}
+.p-head svg.mark{width:36px;height:36px;flex:none}
+.p-head .t{flex:1;min-width:0}
+.p-head b{display:block;font:750 1.02rem/1.2 var(--display)}
+.live{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:700;color:var(--hivis)}
+.live::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--hivis)}
+.x{width:44px;height:44px;border-radius:12px;border:0;background:transparent;color:var(--on-ink);display:grid;place-items:center}
+.x:hover{background:rgba(234,240,247,.1)}
+.disc{padding:10px 16px;background:#FFF6D6;border-bottom:1px solid #F0DE9C;font-size:.82rem;line-height:1.45;color:#3D3313}
+.log{flex:1;overflow-y:auto;overscroll-behavior:contain;padding:16px;display:flex;flex-direction:column;gap:10px;background:#F6F8FB}
+.msg{max-width:88%;padding:10px 13px;border-radius:18px;font-size:.95rem;line-height:1.48;white-space:pre-line}
+.msg.bot{align-self:flex-start;background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:6px}
+.msg.me{align-self:flex-end;background:var(--ink);color:var(--on-ink);border-bottom-right-radius:6px}
+.msg a{color:var(--ink);font-weight:700}
+.msg ul{margin:6px 0 2px;padding-left:18px;white-space:normal}
+.msg li{margin:3px 0}
+.msg .mailbtn{display:flex;margin-top:10px;width:100%;min-height:48px;font-size:.98rem;white-space:normal;text-align:center}
+.typing{align-self:flex-start;display:flex;gap:4px;padding:14px;background:var(--surface);border:1px solid var(--line);border-radius:18px}
+.typing span{width:7px;height:7px;border-radius:50%;background:var(--muted);opacity:.5}
+@media (prefers-reduced-motion:no-preference){.typing span{animation:blink 1s infinite}.typing span:nth-child(2){animation-delay:.15s}.typing span:nth-child(3){animation-delay:.3s}@keyframes blink{50%{opacity:1}}}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:10px 12px;border-top:1px solid var(--line);background:var(--surface);scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:600 .92rem/1 var(--body)}
+.chip:hover{border-color:var(--ink)}
+.compose{display:flex;gap:8px;padding:10px 12px calc(12px + env(safe-area-inset-bottom));background:var(--surface)}
+.compose input{flex:1;min-width:0;min-height:48px;padding:0 14px;border-radius:var(--r-btn);border:1.5px solid #8C99AB;font:400 16px/1 var(--body);color:var(--ink);background:var(--surface)}
+.compose input:focus{outline:3px solid var(--ink);outline-offset:1px;border-color:var(--ink)}
+.send{width:48px;height:48px;flex:none;border-radius:var(--r-btn);border:0;background:var(--ink);color:var(--hivis);display:grid;place-items:center}
+.send:hover{background:var(--ink-3)}
+.p-foot{padding:0 16px 10px;background:var(--surface);font-size:.75rem;color:var(--muted)}
+@media (max-width:559px){body.chat-open{overflow:hidden}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to main content</a>
-
-<!-- Inline SVG icon sprite (Lucide-style, 2px stroke). Decorative uses are aria-hidden. -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mk" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#132A47"/><path d="M8 9.5h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-9l-5 4v-4H8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z" fill="#FFD23F"/><path d="m11.5 15.5 3 3 6-6" fill="none" stroke="#0B1B2E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
-  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
-  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 16l2 2 4-4"/></symbol>
-  <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2.5l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.3l-5.8 3.1 1.1-6.5L2.6 9.3l6.5-.9z"/></symbol>
-  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
-  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
-  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v14M6 13l6 6 6-6M4 21h16"/></symbol>
-  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/></symbol>
-  <symbol id="i-refund" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></symbol>
-  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></symbol>
-  <symbol id="i-tag" viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8z"/><circle cx="7" cy="7" r="1.5"/></symbol>
-  <symbol id="i-unlock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></symbol>
-  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 15l2 2 4-4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-phoneoff" viewBox="0 0 24 24"><path d="M10.7 13.3a16 16 0 0 0 3.4 2.6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 4.2 2 2 0 0 1 5.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8.9 9.8M22 2 2 22"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
 </svg>
 
-<header class="site-header">
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="top dark">
   <div class="w">
-    <a class="logo" href="#main" aria-label="AUTOMAIT home">
-      <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></span>
-      AUTOMAIT
+    <a class="brand" href="#main" aria-label="AUTOMAIT, back to top">
+      <svg class="mark" aria-hidden="true"><use href="#mk"/></svg>
+      <span class="word">AUTOM<b>AI</b>T</span>
     </a>
     <nav class="nav" aria-label="Main">
-      <a class="link" href="#services">Services</a>
-      <a class="link" href="#how">How it works</a>
-      <a class="link" href="#kit">$29 kit</a>
-      <a class="btn btn-ghost btn-sm" href="mailto:hello@automait.au?subject=AUTOMAIT%20enquiry">Contact</a>
+      <a class="l" href="#services">Services</a>
+      <a class="l" href="#how">How it works</a>
+      <a class="l" href="#kit">$29 kit</a>
+      <a class="l" href="#faq">FAQ</a>
+      <a class="btn btn-go" href="mailto:hello@automait.au?subject=Fixed-price%20quote%20request">Get a quote</a>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <div class="w hero">
-    <p class="eyebrow"><svg class="icon icon-sm" aria-hidden="true"><use href="#i-bolt"/></svg>For Australian tradies &amp; small service businesses</p>
-    <h1>Stop losing jobs to slow replies.</h1>
-    <p class="lede">We set up AI that answers enquiries in seconds, books the work and asks every customer for a review, so your business keeps selling while you're on the tools.</p>
-    <div class="hero-actions">
-      <a class="btn btn-cta btn-block" href="mailto:hello@automait.au?subject=AUTOMAIT%20setup%20enquiry">
-        <svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail"/></svg>Get a fixed-price quote
-      </a>
-      <a class="btn btn-ghost btn-block" href="#kit">Or DIY with the $29 kit
-        <svg class="icon icon-sm" aria-hidden="true"><use href="#i-arrow"/></svg>
-      </a>
+<section class="hero dark" aria-labelledby="h1" style="padding-bottom:0">
+  <div class="w">
+    <div class="hero-copy">
+      <p class="kicker"><span class="dot" aria-hidden="true"></span>For Australian tradies and service businesses</p>
+      <h1 id="h1">Stop losing jobs to slow replies.</h1>
+      <p class="lede">We set up AI that <strong>answers new enquiries automatically</strong>, books the work and asks happy customers for a Google review, so the business keeps selling while you're on the tools.</p>
+      <div class="cta-row">
+        <a class="btn btn-go" href="mailto:hello@automait.au?subject=Fixed-price%20quote%20request&amp;body=Business%20name%3A%0AWhat%20you%20do%3A%0AHow%20enquiries%20reach%20you%20now%20(phone%2C%20web%20form%2C%20email%2C%20Facebook)%3A%0AWhat%20you%27d%20like%20help%20with%3A%0A">
+          <svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Get a fixed-price quote</a>
+        <a class="btn btn-line" href="#kit">Or DIY with the $29 kit</a>
+      </div>
+      <ul class="reassure">
+        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Written quote, usually within one business day</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>One-off setup fee</li>
+        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>No lock-in contract</li>
+      </ul>
+      <button class="try" type="button" data-open-chat><svg class="i" aria-hidden="true"><use href="#i-msg"/></svg>Chat with our demo front desk</button>
     </div>
-    <ul class="facts" aria-label="Key terms">
-      <li><svg class="icon" aria-hidden="true"><use href="#i-tag"/></svg>Fixed-price written quotes</li>
-      <li><svg class="icon" aria-hidden="true"><use href="#i-unlock"/></svg>No lock-in contract</li>
-      <li><svg class="icon" aria-hidden="true"><use href="#i-check"/></svg>No GST charged</li>
-    </ul>
+
+    <div class="stage">
+      <span class="tag"><svg class="i" aria-hidden="true"><use href="#i-eye"/></svg>Example: fictional business</span>
+      <figure class="phone" aria-label="Example conversation: a customer texts a plumbing business at 6:41 pm and gets an instant AI reply asking for a photo, then the owner is notified." style="margin-left:0;margin-right:0;margin-bottom:0">
+        <div class="screen" aria-hidden="true">
+          <div class="notch"></div>
+          <div class="chat-top">
+            <span class="avatar">CP</span>
+            <div><b>Coastline Plumbing</b><span>Replies instantly, 24/7</span></div>
+          </div>
+          <div class="thread seq">
+            <span class="time">Tue 6:41 pm</span>
+            <p class="b in">Hi, our hot water's stopped working. Can someone look at it this week? We're in Newtown.</p>
+            <p class="b out">Thanks Jess, Coastline Plumbing here. Dave's on a job and will call you by 8 am tomorrow. Can you send a photo of the unit and its label so he can quote faster?</p>
+            <span class="meta"><svg class="i"><use href="#i-check"/></svg>Replied in 9 seconds</span>
+            <div class="b in pic"><span class="thumb"></span>Here you go</div>
+            <div class="ping"><svg class="i"><use href="#i-bell"/></svg><div><b>New lead sent to Dave</b>Jess, Newtown. Hot water, photo attached. Call by 8 am.</div></div>
+          </div>
+        </div>
+      </figure>
+    </div>
   </div>
+  <div class="tape" aria-hidden="true"></div>
+</section>
 
-  <section id="services" class="alt" aria-labelledby="services-h">
-    <div class="w">
-      <div class="section-head">
-        <h2 id="services-h">What we set up</h2>
-        <p>One-off setup fees, with a written fixed quote before you pay.</p>
-      </div>
-      <div class="grid grid-3">
-        <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-msg"/></svg></div>
-          <h3>AI enquiry responder</h3>
-          <p class="price">From $249 <span>one-off setup</span></p>
-          <ul class="checks">
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Instant, on-brand replies to web form and email enquiries</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Collects job details and photos</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Hands hot leads to you by SMS or email</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-cal"/></svg></div>
-          <h3>Booking &amp; follow-up</h3>
-          <p class="price">From $349 <span>one-off setup</span></p>
-          <ul class="checks">
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Online booking linked to your calendar</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Automatic reminders to cut no-shows</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Quote follow-ups that don't go cold</li>
-          </ul>
-        </article>
-        <article class="card">
-          <div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-star"/></svg></div>
-          <h3>Review engine</h3>
-          <p class="price">From $149 <span>one-off setup</span></p>
-          <ul class="checks">
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Asks every customer for a Google review once the job's done</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Gives every customer the same review link, plus a direct line to you if something wasn't right</li>
-          </ul>
-        </article>
-      </div>
-      <p class="grid-note">Setup prices are one-off. Some features use third-party tools (e.g. SMS, booking or AI services) that may have their own fees, paid directly by you; your written quote lists every cost up front.</p>
+<section aria-labelledby="prob-h">
+  <div class="w">
+    <div class="head">
+      <h2 id="prob-h">The job often goes to whoever replies first.</h2>
+      <p>Many customers message more than one business at once. When you're up a ladder or under a house, an enquiry can sit for hours, and by the time you call back they've booked someone else.</p>
     </div>
-  </section>
-
-  <section id="how" aria-labelledby="how-h">
-    <div class="w">
-      <div class="section-head">
-        <h2 id="how-h">How it works</h2>
-        <p>Three steps, starting with an email.</p>
+    <div class="compare">
+      <div class="col bad">
+        <h3><svg class="i" aria-hidden="true"><use href="#i-phoneoff"/></svg>A busy day, no front desk</h3>
+        <ol class="events">
+          <li><time>9:12 am</time><span>Missed call while on a roof. No voicemail left. <em>Caller rings the next plumber.</em></span></li>
+          <li><time>11:40 am</time><span>Web form enquiry lands. <em>Answered at 7 pm.</em></span></li>
+          <li><time>3:05 pm</time><span>Quote sent last week. <em>No follow-up, goes cold.</em></span></li>
+          <li><time>5:30 pm</time><span>Happy customer, job done. <em>Never asked for a review.</em></span></li>
+        </ol>
       </div>
-      <ol class="steps grid grid-3">
-        <li class="card step">
-          <span class="step-num" aria-hidden="true">1</span>
-          <h3>Email us</h3>
-          <p>Tell us what you do and how enquiries reach you now.</p>
-        </li>
-        <li class="card step">
-          <span class="step-num" aria-hidden="true">2</span>
-          <h3>Fixed quote</h3>
-          <p>You get a written, fixed price within one business day. Pay online; no lock-in contract.</p>
-        </li>
-        <li class="card step">
-          <span class="step-num" aria-hidden="true">3</span>
-          <h3>Build and hand over</h3>
-          <p>We build, test and hand over, with plain-English instructions. Your quote states the expected timeframe.</p>
-        </li>
-      </ol>
-      <p style="margin-top:var(--space-4)">
-        <a class="btn btn-cta btn-block" href="mailto:hello@automait.au?subject=AUTOMAIT%20setup%20enquiry">
-          <svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail"/></svg>Start with step 1: email us
-        </a>
-      </p>
-    </div>
-  </section>
-
-  <section id="kit" aria-labelledby="kit-h" style="padding-top:0">
-    <div class="w">
-      <div class="kit">
-        <div>
-          <h2 id="kit-h">Do it yourself: the AI Front Desk Kit</h2>
-          <p class="sub">Set up in about an afternoon with free tools you already have.</p>
-          <ul class="checks">
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Copy-paste enquiry auto-replies (general, emergency, appointment, after-hours)</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Missed-call text-back scripts and setup</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>3-step quote follow-up sequence</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Google review request templates with Spam Act basics</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>10 AI prompts for quotes, complaints, invoices and posts</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>Australian compliance checklist (Spam Act, ACL, reviews, privacy)</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-check"/></svg>11-page PDF plus an editable Word file</li>
-          </ul>
-        </div>
-        <div class="buybox">
-          <p class="big">$29<small>AUD</small></p>
-          <ul class="meta">
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-down"/></svg>Instant download</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-file"/></svg>PDF + editable Word file</li>
-            <li><svg class="icon icon-sm" aria-hidden="true"><use href="#i-refund"/></svg>14-day no-questions refund</li>
-          </ul>
-          <a class="btn btn-cta" href="https://buy.stripe.com/4gM14n2N47aOa2L5Ap2B200">Buy the kit, $29</a>
-          <p class="fine">Not useful? Email us within 14 days for a full refund, no questions asked. This is in addition to your rights under the Australian Consumer Law. Secure checkout via Stripe. No GST charged. <a href="/terms/">Terms of sale</a>.</p>
-        </div>
+      <div class="col good">
+        <h3><svg class="i" aria-hidden="true"><use href="#i-bolt"/></svg>The same day, with AUTOMAIT</h3>
+        <ol class="events">
+          <li><time>9:12 am</time><span>Missed call gets an automatic text back, asking what they need.</span></li>
+          <li><time>11:40 am</time><span>Instant reply collects the address and photos. <em>You get the lead by SMS.</em></span></li>
+          <li><time>3:05 pm</time><span>Day-7 follow-up goes out <em>automatically</em>.</span></li>
+          <li><time>5:30 pm</time><span>Review request sent <em>with your Google link</em>.</span></li>
+        </ol>
       </div>
     </div>
-  </section>
+    <p class="fine">Illustrative example of one day. Your setup is built around how enquiries reach you now.</p>
+  </div>
+</section>
 
-  <section aria-labelledby="trust-h" style="padding-top:0">
-    <div class="w">
-      <div class="note">
-        <div class="card-icon" aria-hidden="true"><svg class="icon"><use href="#i-shield"/></svg></div>
-        <div>
-          <h2 id="trust-h">Run by AI, accountable to people</h2>
-          <p>AUTOMAIT is an AI-operated business: an AI agent does the building and answers your emails, which is why it's fast and affordable. A registered Australian business (ABN 82 801 716 831) stands behind every job. If something we deliver isn't working as quoted, email hello@automait.au. Our services also come with guarantees under the Australian Consumer Law that can't be excluded, including a refund for a major failure.</p>
+<section id="services" aria-labelledby="svc-h" style="padding-top:0">
+  <div class="w">
+    <div class="head">
+      <h2 id="svc-h">What we set up for you</h2>
+      <p>Pick one or combine them. Every job starts with a written, fixed quote, so you know the full price before you pay.</p>
+    </div>
+    <div class="svc">
+      <article class="card lead">
+        <span class="badge">Start here</span>
+        <div class="ch"><span class="ic" aria-hidden="true"><svg class="i"><use href="#i-msg"/></svg></span>
+        <h3>AI enquiry responder</h3></div>
+        <p class="price"><span class="from">From</span><span class="amt">$249</span><span class="unit">one-off setup</span></p>
+        <ul class="ticks">
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Instant, on-brand replies to web form and email enquiries</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Collects job details and photos</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Hands hot leads to you by SMS or email</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="ch"><span class="ic" aria-hidden="true"><svg class="i"><use href="#i-cal"/></svg></span>
+        <h3>Booking &amp; follow-up</h3></div>
+        <p class="price"><span class="from">From</span><span class="amt">$349</span><span class="unit">one-off setup</span></p>
+        <ul class="ticks">
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Online booking linked to your calendar</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Automatic reminders to cut no-shows</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Quote follow-ups that don't go cold</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="ch"><span class="ic" aria-hidden="true"><svg class="i"><use href="#i-star"/></svg></span>
+        <h3>Review engine</h3></div>
+        <p class="price"><span class="from">From</span><span class="amt">$149</span><span class="unit">one-off setup</span></p>
+        <ul class="ticks">
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Asks every customer for a Google review once the job's done</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Same review link for every customer, plus a direct line to you if something wasn't right</li>
+        </ul>
+      </article>
+    </div>
+    <p class="svc-note"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><span>Setup prices are one-off. Some features use third-party tools (for example SMS, booking or AI services) that may have their own fees, paid directly by you. Your written quote lists every cost up front.</span></p>
+  </div>
+</section>
+
+<section id="how" class="steps-sec" aria-labelledby="how-h">
+  <div class="w">
+    <div class="head">
+      <h2 id="how-h">How it works</h2>
+      <p>Three steps, and the first one is an email.</p>
+    </div>
+    <ol class="steps">
+      <li><div><h3>Email us</h3><p>Tell us what you do and how enquiries reach you now: calls, web form, email or Facebook.</p></div></li>
+      <li><div><h3>Get a fixed quote</h3><p>A written, fixed price within one business day. Pay online. No lock-in contract.</p></div></li>
+      <li><div><h3>We build and hand over</h3><p>We build, test and hand over with plain-English instructions. Your quote states the expected timeframe.</p></div></li>
+    </ol>
+    <p class="after"><a class="btn btn-go" href="mailto:hello@automait.au?subject=Fixed-price%20quote%20request&amp;body=Business%20name%3A%0AWhat%20you%20do%3A%0AHow%20enquiries%20reach%20you%20now%3A%0AWhat%20you%27d%20like%20help%20with%3A%0A"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Start with step 1: email us</a></p>
+  </div>
+</section>
+
+<section id="kit" aria-labelledby="kit-h">
+  <div class="w">
+    <div class="kit">
+      <div class="cover-wrap" aria-hidden="true">
+        <div class="cover">
+          <small>For Australian trades &amp; service businesses</small>
+          <strong>The AI Front Desk Kit</strong>
+          <span class="bar"></span>
+          <span class="ln"></span><span class="ln" style="width:80%"></span><span class="ln" style="width:90%"></span><span class="ln" style="width:60%"></span>
+          <span class="ft"><svg><use href="#mk"/></svg>AUTOMAIT</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="final alt" aria-labelledby="final-h">
-    <div class="w">
-      <h2 id="final-h">Ready to stop missing enquiries?</h2>
-      <p>Tell us how enquiries reach you now and get a written, fixed price within one business day.</p>
-      <div class="hero-actions">
-        <a class="btn btn-cta btn-block" href="mailto:hello@automait.au?subject=AUTOMAIT%20setup%20enquiry">
-          <svg class="icon icon-sm" aria-hidden="true"><use href="#i-mail"/></svg>Get a fixed-price quote
-        </a>
-        <a class="btn btn-ghost btn-block" href="https://buy.stripe.com/4gM14n2N47aOa2L5Ap2B200">Buy the $29 kit</a>
+      <div>
+        <h2 id="kit-h">Rather do it yourself? Get the AI Front Desk Kit.</h2>
+        <p class="sub">Set up in about an afternoon with free tools you already have: Gmail or Outlook, your phone, your Google Business Profile and any AI chat tool.</p>
+        <ul class="ticks">
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Copy-paste enquiry auto-replies (general, emergency, appointment, after-hours)</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Missed-call text-back scripts and setup</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>3-step quote follow-up sequence</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Google review request templates, done the compliant way</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>10 AI prompts for quotes, complaints, invoices and posts</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Australian compliance checklist (Spam Act, ACL, reviews, privacy)</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>11-page PDF plus an editable Word file</li>
+          <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Instant download after checkout</li>
+        </ul>
+        <div class="buy">
+          <p class="amt">$29<span>AUD</span></p>
+          <a class="btn btn-go" href="https://buy.stripe.com/4gM14n2N47aOa2L5Ap2B200"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>Buy the kit, $29</a>
+        </div>
+        <p class="fine">Not useful? Email us within 14 days for a full refund, no questions asked. This is in addition to your rights under the Australian Consumer Law. Secure checkout via Stripe. No GST charged. <a href="/terms/">Terms of sale</a>.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<section aria-labelledby="ai-h" style="padding-top:0">
+  <div class="w ai">
+    <span class="big" aria-hidden="true"><svg><use href="#mk"/></svg></span>
+    <div>
+      <h2 id="ai-h">Run by AI, accountable to people</h2>
+      <p>AUTOMAIT is an AI-operated business. An AI agent does the building and answers your emails, which is why it's fast and the prices are low. <strong>A registered Australian business (ABN 82 801 716 831) stands behind every job.</strong> If something we deliver isn't working as quoted, email hello@automait.au. Our services come with guarantees under the Australian Consumer Law that can't be excluded, including having problems fixed within a reasonable time and a refund for a major failure.</p>
+    </div>
+  </div>
+</section>
+
+<section id="faq" class="faq-sec" aria-labelledby="faq-h">
+  <div class="w faq-grid">
+    <div class="head">
+      <h2 id="faq-h">Questions tradies ask us</h2>
+      <p>Still unsure? Email <a href="mailto:hello@automait.au" style="font-weight:600;color:var(--ink)">hello@automait.au</a> and you'll get a straight answer.</p>
+    </div>
+    <div class="faq">
+      <details><summary>How much does it cost?<span class="pm" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Setup is a one-off fee: AI enquiry responder from $249, booking &amp; follow-up from $349, review engine from $149. The DIY kit is $29. You get a written, fixed quote before you pay anything.</p><p>Some features rely on third-party tools (for example SMS, booking or AI services) with their own fees, paid directly by you. Your quote lists every cost up front.</p></div></details>
+      <details><summary>Is there a contract or monthly fee from you?<span class="pm" aria-hidden="true"></span></summary>
+        <div class="ans"><p>No lock-in contract. Our setup fees are one-off. Any ongoing third-party tool costs are named in your quote.</p></div></details>
+      <details><summary>What tools does it use? Do I need new software?<span class="pm" aria-hidden="true"></span></summary>
+        <div class="ans"><p>We start from what you already use, such as your email, website form, calendar and Google Business Profile. If a feature needs an extra tool, your quote names it and what it costs before you decide.</p></div></details>
+      <details><summary>What happens to my customers' data?<span class="pm" aria-hidden="true"></span></summary>
+        <div class="ans"><p>When we set up a service we need access to the accounts it runs on, and to customer details that pass through them. We use that only to provide the service you asked for. Read the <a href="/privacy/">privacy policy</a> for the details.</p></div></details>
+      <details><summary>What if it doesn't work, or the kit isn't useful?<span class="pm" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Kit: email us within 14 days for a full refund, no questions asked. This is in addition to your rights under the Australian Consumer Law.</p><p>Setups: if something we deliver isn't working as quoted, email us. Consumer Law guarantees apply, including having problems fixed within a reasonable time and a refund for a major failure. See the terms of sale. Consumer Law guarantees also apply, including a refund for a major failure. See the <a href="/terms/">terms of sale</a>.</p></div></details>
+      <details><summary>Is this AI? Will my customers know?<span class="pm" aria-hidden="true"></span></summary>
+        <div class="ans"><p>Yes, AUTOMAIT is AI-operated, and a registered Australian business stands behind it. The replies we set up are written in your business's voice, and we recommend being upfront that a message is automatic. Hot leads still come straight to you.</p></div></details>
+      <details><summary>Do you charge GST?<span class="pm" aria-hidden="true"></span></summary>
+        <div class="ans"><p>No. AUTOMAIT is not registered for GST, so no GST is charged.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<section class="dark final" aria-labelledby="final-h">
+  <div class="w">
+    <h2 id="final-h">Next enquiry, answered in seconds.</h2>
+    <p>Tell us how enquiries reach you now and get a written, fixed price within one business day.</p>
+    <div class="cta-row">
+      <a class="btn btn-go" href="mailto:hello@automait.au?subject=Fixed-price%20quote%20request&amp;body=Business%20name%3A%0AWhat%20you%20do%3A%0AHow%20enquiries%20reach%20you%20now%3A%0AWhat%20you%27d%20like%20help%20with%3A%0A"><svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Get a fixed-price quote</a>
+      <a class="btn btn-line" href="https://buy.stripe.com/4gM14n2N47aOa2L5Ap2B200">Buy the $29 kit</a>
+    </div>
+    <a class="mail" href="mailto:hello@automait.au">hello@automait.au</a>
+  </div>
+</section>
 </main>
 
-<footer>
+<footer class="dark">
   <div class="w">
-    <p>AUTOMAIT · ABN 82 801 716 831 · Australia</p>
-    <p>AUTOMAIT is not registered for GST, so no GST is charged.</p>
-    <p><a href="mailto:hello@automait.au">hello@automait.au</a></p>
-    <p class="legal-links"><a href="/blog/">Blog</a> · <a href="/skills/">AI Operator Pack (agent skills)</a> · <a href="/privacy/">Privacy policy</a> · <a href="/terms/">Terms of sale</a></p>
+    <div>
+      <p>AUTOMAIT · ABN 82 801 716 831 · Australia</p>
+      <p>AUTOMAIT is not registered for GST, so no GST is charged.</p>
+    </div>
+    <nav aria-label="Legal"><a href="/privacy/">Privacy policy</a><a href="/terms/">Terms of sale</a><a href="mailto:hello@automait.au">Email us</a></nav>
   </div>
 </footer>
+
+<!-- Demo assistant (progressive enhancement: hidden unless JS runs) -->
+<button class="launch" id="launch" type="button" aria-controls="chat" aria-expanded="false" hidden>
+  <span class="lm" aria-hidden="true"><svg class="i"><use href="#i-msg"/></svg></span>
+  <span><small>Demo</small>Ask our AI<span class="long"> front desk</span></span>
+</button>
+<div class="panel" id="chat" role="dialog" aria-modal="false" aria-labelledby="chat-t" hidden>
+  <div class="p-head">
+    <svg class="mark" aria-hidden="true"><use href="#mk"/></svg>
+    <div class="t"><b id="chat-t">AUTOMAIT front desk</b><span class="live">Demo</span></div>
+    <button class="x" type="button" id="chat-x" aria-label="Close demo chat"><svg class="i" aria-hidden="true"><use href="#i-x"/></svg></button>
+  </div>
+  <p class="disc"><strong>Demo assistant — answers from our FAQ; a real setup uses your business details.</strong> It runs in your browser: nothing you type is stored or sent.</p>
+  <div class="log" id="log" role="log" aria-live="polite" aria-label="Conversation"></div>
+  <div class="chips" id="chips" role="group" aria-label="Suggested questions"></div>
+  <form class="compose" id="compose" autocomplete="off">
+    <label class="sr" for="q">Type your message</label>
+    <input id="q" name="q" type="text" placeholder="Ask about prices, the kit, refunds…" enterkeyhint="send">
+    <button class="send" type="submit" aria-label="Send message"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg></button>
+  </form>
+</div>
+
+<script>
+(function(){
+  document.documentElement.classList.add('js');
+  var $=function(id){return document.getElementById(id)};
+  var launch=$('launch'),panel=$('chat'),log=$('log'),chips=$('chips'),form=$('compose'),q=$('q'),closeB=$('chat-x');
+  var MAIL='hello@automait.au',KIT='https://buy.stripe.com/4gM14n2N47aOa2L5Ap2B200';
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var started=false,lead=null,lastFocus=null,busy=false;
+  var MAIN=['Prices','How it works','The $29 kit','Refunds','Is this AI?','Get a quote'];
+  var A={
+    hi:{t:"G'day! I'm the demo version of the AUTOMAIT front desk. I can answer questions about our setups and prices, or help you write a quick quote request email. What can I help with?",c:MAIN},
+    price:{t:'Setup is a one-off fee:<ul><li>AI enquiry responder: from $249</li><li>Booking &amp; follow-up: from $349</li><li>Review engine: from $149</li><li>DIY AI Front Desk Kit: $29</li></ul>You get a written, fixed quote before you pay. If a feature needs a third-party tool (like SMS), the quote lists that cost too.',c:['Get a quote','The $29 kit','Contracts?','How it works']},
+    responder:{t:'The AI enquiry responder (from $249 one-off) sends instant, on-brand replies to web form and email enquiries, collects job details and photos, and hands hot leads to you by SMS or email.',c:['Get a quote','Prices','Booking','Reviews']},
+    booking:{t:'Booking &amp; follow-up (from $349 one-off) gives you online booking linked to your calendar, automatic reminders to cut no-shows, and quote follow-ups that don\u2019t go cold.',c:['Get a quote','Prices','Reviews']},
+    reviews:{t:'The review engine (from $149 one-off) asks every customer for a Google review once the job\u2019s done, with the same link for everyone, plus a direct line to you if something wasn\u2019t right.',c:['Get a quote','Prices','Enquiry replies']},
+    kit:{t:'The AI Front Desk Kit is $29 AUD, instant download: enquiry auto-replies, missed-call text-back scripts, a 3-step quote follow-up, review request templates, 10 AI prompts and an Australian compliance checklist. 11-page PDF plus an editable Word file.\n\n<a href="'+KIT+'">Buy the kit, $29</a>\nNot useful? Email within 14 days for a full refund.',c:['Refunds','Get a quote','Prices']},
+    how:{t:'Three steps:<ul><li>Email us how enquiries reach you now.</li><li>Get a written, fixed price within one business day. Pay online, no lock-in contract.</li><li>We build, test and hand over with plain-English instructions. Your quote states the timeframe.</li></ul>',c:['Get a quote','Prices','What tools?']},
+    refund:{t:'Kit: email within 14 days for a full refund, no questions asked. Setups: if something isn\u2019t working as quoted, email us. Consumer Law guarantees apply, including having problems fixed within a reasonable time and a refund for a major failure. Both are in addition to your rights under the Australian Consumer Law. Details in our <a href="/terms/">terms of sale</a>.',c:['Get a quote','The $29 kit']},
+    ai:{t:'Yes, I\u2019m a scripted demo, and AUTOMAIT itself is AI-operated: an AI agent builds the setups and answers emails, which keeps prices low. A registered Australian business (ABN 82 801 716 831) stands behind every job.',c:['Get a quote','Prices','Privacy']},
+    tools:{t:'We start from what you already use: your email, website form, calendar and Google Business Profile. If a feature needs an extra tool, your quote names it and its cost before you decide.',c:['Get a quote','Prices','Privacy']},
+    privacy:{t:'This demo runs only in your browser and stores nothing. For real setups, we only use customer details to run the service you asked for. See the <a href="/privacy/">privacy policy</a>.',c:['Get a quote','Is this AI?']},
+    money:{t:'No lock-in contract, and our setup fees are one-off. Any third-party tool costs are listed in your quote. AUTOMAIT is not registered for GST, so no GST is charged.',c:['Get a quote','Prices']},
+    thanks:{t:'No worries. Anything else?',c:MAIN},
+    fallback:{t:'I\u2019m only a demo, so I know our FAQ and not much else. A real setup would be trained on your business. Try one of these, or ask for a quote and the team will answer properly.',c:MAIN}
+  };
+  var R=[
+    [/\b(cancel|stop|start over|restart)\b/,'cancel'],
+    [/(are you|is this|you an?) ?(a )?(bot|ai|robot|real|human|person)|\bai\b|who runs|chatgpt/,'ai'],
+    [/quote|contact|get started|sign me up|talk to|speak to|email (you|the team)|human|someone call/,'lead'],
+    [/\bkit\b|diy|\$?29\b|template|download|pdf|word file/,'kit'],
+    [/refund|money back|guarantee|not happy|doesn.?t work|consumer law|\bacl\b/,'refund'],
+    [/gst|tax|contract|lock.?in|monthly|subscription|ongoing|per month/,'money'],
+    [/privacy|data|store|secure|safe|stored/,'privacy'],
+    [/book|calendar|remind|no.?show|follow.?up|chase/,'booking'],
+    [/review|google|stars?\b|rating/,'reviews'],
+    [/enquir|respond|auto.?repl|missed call|text.?back|reply|replies|sms|lead/,'responder'],
+    [/price|cost|how much|\$|cheap|expens|fee|pay|charge/,'price'],
+    [/tool|software|gmail|outlook|xero|servicem8|tradify|crm|website|integrat|app\b/,'tools'],
+    [/how (does|do|long)|process|steps?|work|timeframe|how fast|when/,'how'],
+    [/^(thanks|thank you|cheers|ta)\b/,'thanks'],
+    [/^(hi|hey|hello|g.?day|yo|morning|afternoon)\b/,'hi']
+  ];
+  var CHIP={'Prices':'price','How it works':'how','The $29 kit':'kit','Refunds':'refund','Is this AI?':'ai','Get a quote':'lead','Contracts?':'money','What tools?':'tools','Privacy':'privacy','Booking':'booking','Reviews':'reviews','Enquiry replies':'responder'};
+
+  function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!=null)e.innerHTML=html;return e}
+  function scroll(){log.scrollTop=log.scrollHeight}
+  function me(text){var m=el('div','msg me');m.textContent=text;log.appendChild(m);scroll()}
+  function setChips(list){chips.innerHTML='';(list||[]).forEach(function(c){var b=el('button','chip');b.type='button';b.textContent=c;b.addEventListener('click',function(){if(busy)return;me(c);if(lead&&c!=='Start over'){leadStep(c)}else{route(CHIP[c]||'fallback',c)}});chips.appendChild(b)});chips.hidden=!(list&&list.length)}
+  function bot(html,next,node){
+    busy=true;setChips([]);
+    var t=el('div','typing');t.setAttribute('aria-label','Typing');t.innerHTML='<span></span><span></span><span></span>';log.appendChild(t);scroll();
+    setTimeout(function(){t.remove();var m=el('div','msg bot',html);if(node)m.appendChild(node);log.appendChild(m);scroll();busy=false;setChips(next)},reduce?60:Math.min(1100,450+html.length*2));
+  }
+  function say(k){var a=A[k];bot(a.t,a.c)}
+  function enc(s){return encodeURIComponent(s)}
+  function startLead(){lead={step:'name'};bot('Happy to get you a fixed-price quote. I\u2019ll collect four quick details and prepare an email for you to send. What\u2019s your first name?\n(Type \u201ccancel\u201d at any time.)',[])}
+  function leadStep(text){
+    var v=text.trim();
+    if(lead.step==='name'){lead.name=v;lead.step='biz';bot('Thanks '+esc(v)+'. What\u2019s the business called, and what do you do?',[]);return}
+    if(lead.step==='biz'){lead.biz=v;lead.step='email';bot('What email should the quote go to?',[]);return}
+    if(lead.step==='email'){if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){bot('That doesn\u2019t look like an email address. Could you check it? For example: you@yourbusiness.com.au',[]);return}lead.email=v;lead.step='need';bot('Last one: what would you like help with?',['Replying to enquiries','Bookings & follow-up','Google reviews','Not sure yet']);return}
+    if(lead.step==='need'){lead.need=v;finish();}
+  }
+  function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+  function finish(){
+    var L=lead;lead=null;
+    var body='Hi AUTOMAIT,\n\nI\u2019d like a fixed-price quote.\n\nName: '+L.name+'\nBusiness: '+L.biz+'\nReply to: '+L.email+'\nHelp with: '+L.need+'\nHow enquiries reach us now (calls, web form, email, Facebook): \n\nThanks';
+    var href='mailto:'+MAIL+'?subject='+enc('Fixed-price quote request: '+L.biz)+'&body='+enc(body);
+    var a=el('a','btn btn-go mailbtn');a.href=href;a.innerHTML='<svg class="i" aria-hidden="true"><use href="#i-mail"/></svg>Open email to send';
+    bot('All set. Here\u2019s what I\u2019ve got:<ul><li>'+esc(L.name)+', '+esc(L.biz)+'</li><li>'+esc(L.email)+'</li><li>'+esc(L.need)+'</li></ul>Nothing has been sent. Tap below to open your email app with this filled in, then press send. You\u2019ll get a written quote within one business day.',['Prices','Is this AI?','Start over'],a);
+  }
+  function route(k,raw){
+    if(k==='cancel'||raw==='Start over'){lead=null;bot('No problem, cleared. What else can I help with?',MAIN);return}
+    if(k==='lead'){startLead();return}
+    say(k);
+  }
+  function classify(t){t=t.toLowerCase();for(var i=0;i<R.length;i++){if(R[i][0].test(t))return R[i][1]}return 'fallback'}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();var v=q.value.trim();if(!v||busy)return;q.value='';me(v);
+    if(lead){if(/^(cancel|stop|start over)$/i.test(v)){route('cancel',v);return}leadStep(v);return}
+    route(classify(v),v);
+  });
+  function open(){
+    lastFocus=document.activeElement;panel.hidden=false;panel.classList.add('on');launch.hidden=true;launch.setAttribute('aria-expanded','true');document.body.classList.add('chat-open');
+    if(!started){started=true;say('hi')}
+    setTimeout(function(){q.focus({preventScroll:true})},50);
+  }
+  function close(){panel.hidden=true;panel.classList.remove('on');launch.hidden=false;launch.setAttribute('aria-expanded','false');document.body.classList.remove('chat-open');(lastFocus&&lastFocus!==document.body?lastFocus:launch).focus()}
+  launch.hidden=false;
+  // On phones, keep the hero clear: show the launcher once the visitor scrolls past the hero buttons
+  var mq=matchMedia('(max-width:559px)');
+  function peek(){launch.classList.toggle('away',mq.matches&&window.scrollY<420)}
+  peek();addEventListener('scroll',peek,{passive:true});mq.addEventListener&&mq.addEventListener('change',peek);
+  launch.addEventListener('click',open);closeB.addEventListener('click',close);
+  document.querySelectorAll('[data-open-chat]').forEach(function(b){b.addEventListener('click',open)});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden)close()});
+  if(location.hash==='#demo')open();
+})();
+</script>
 </body>
 </html>
