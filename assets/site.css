@@ -368,7 +368,7 @@ a:hover>.ar{transform:translateX(3px)}
 .tp+.tp{margin-top:24px}
 @media (min-width:900px){.tp{grid-template-columns:.9fr 1.1fr}}
 .tp .media{aspect-ratio:auto;max-height:420px;border-bottom:1px solid var(--line)}
-@media (min-width:900px){.tp .media{max-height:none;border-bottom:0;border-right:1px solid var(--line)}}
+@media (min-width:900px){.tp .media{max-height:none;border-bottom:0;border-right:1px solid var(--line);align-self:start;aspect-ratio:4/5;background:#fff}.tp .media img{height:100%;width:100%;object-fit:contain;object-position:center top;padding:16px}}
 .tp .media img{height:100%;max-height:inherit}
 .tp .body{padding:24px 22px 26px}
 @media (min-width:900px){.tp .body{padding:40px}}
