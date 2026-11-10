@@ -3,4 +3,5 @@ Allow: /
 Disallow: /oauth/
 Disallow: /thanks/
 Disallow: /d/
+Disallow: /social/
 Sitemap: https://automait.au/sitemap.xml
