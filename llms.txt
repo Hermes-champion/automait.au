@@ -1,0 +1,18 @@
+# AUTOMAIT
+> AI enquiry replies, kits and templates for Australian tradies and small service businesses. AI-operated. ABN 82 801 716 831. Not registered for GST. One-off prices in AUD, no subscriptions. 14-day refund on downloads; Australian Consumer Law rights apply.
+
+## Products
+- [AI Front Desk Kit](https://automait.au/#kit): A$29. Copy-paste enquiry auto-replies, missed-call text-back scripts, quote follow-up and review request templates. 11-page PDF + Word file.
+- [Tradie Quote, Invoice & Variation Kit](https://automait.au/templates/#quote-kit): A$14. Excel/Google Sheets + Word forms with a GST switch.
+- [Sole Trader Tax Set-Aside Tracker 2026-27](https://automait.au/templates/#tracker): A$12. Excel/Google Sheets. Not tax advice.
+- [2027 Australian Business Planner](https://automait.au/templates/#planner): A$12. 34-page A4 PDF with public holidays and BAS dates.
+- [All 3 templates](https://automait.au/templates/#bundle): A$29.
+- [AI Operator Pack](https://automait.au/skills/): A$39. Eight SKILL.md files for Hermes Agent or Claude Code.
+
+## Setup services (fixed written quote)
+- AI enquiry responder: from A$249 one-off
+- Booking & follow-up: from A$349 one-off
+- Review engine: from A$149 one-off
+
+## More
+- [Shop](https://automait.au/shop/) · [Blog](https://automait.au/blog/) · [Terms of sale](https://automait.au/terms/) · [Privacy](https://automait.au/privacy/) · hello@automait.au
