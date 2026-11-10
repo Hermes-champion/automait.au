@@ -11,7 +11,10 @@
 <meta property="og:title" content="Shop AUTOMAIT: kits, templates &amp; setups for tradies"><meta property="og:description" content="Everything AUTOMAIT sells, with prices: AI Front Desk Kit A$29, quote/invoice and tax templates from A$12, AI Operator Pack A$39, and fixed-price setups from A$149. Australian, one-off prices."><meta property="og:url" content="https://automait.au/shop/">
 <meta property="og:image" content="https://automait.au/img/og-shop.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Shop AUTOMAIT: kits, templates &amp; setups for tradies"><meta name="twitter:description" content="Everything AUTOMAIT sells, with prices: AI Front Desk Kit A$29, quote/invoice and tax templates from A$12, AI Operator Pack A$39, and fixed-price setups from A$149. Australian, one-off prices."><meta name="twitter:image" content="https://automait.au/img/og-shop.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230B1B2E'/%3E%3Cpath d='M8 9.5h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-9l-5 4v-4H8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z' fill='%23FFD23F'/%3E%3Cpath d='m11.5 15.5 3 3 6-6' fill='none' stroke='%230B1B2E' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet">
@@ -31,12 +34,54 @@
 .xm-chips b{font:800 1.05rem/1 var(--display);white-space:nowrap}
 @media (min-width:768px){.xm-ed{grid-column:1/-1}.xm-chips{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (min-width:1100px){.xm-ed{grid-column:span 2}}
+/* ---- shop v2: compact hero + product collage ---- */
+.phero.shp .w{padding-top:24px;padding-bottom:26px}
+.shp .hgrid{display:grid;grid-template-columns:minmax(0,1fr);align-items:start}
+.shp .kicker{margin-bottom:12px}
+.shp h1{font-size:clamp(2.05rem,7.6vw,3.25rem);max-width:19ch}
+.shp .lede{margin-top:12px;font-size:clamp(1.05rem,2vw,1.2rem);max-width:54ch}
+.shp .chiprow{margin-top:16px}
+.shp .trust{margin-top:14px;font-size:.86rem;line-height:1.5}
+#xmas{padding-top:40px}
+.hcol{margin-top:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-self:start}
+.ht{display:block;position:relative;aspect-ratio:4/3;background:#fff;border-radius:10px;padding:4px;overflow:hidden;box-shadow:0 10px 24px -12px rgba(0,0,0,.6)}
+.ht img{display:block;width:100%;height:100%;object-fit:contain;object-position:center top}
+.ht:nth-child(4){display:none}
+.ht:focus-visible{outline:3px solid var(--hivis);outline-offset:3px}
+@media (max-width:559px){
+  .shp .chiprow{flex-wrap:nowrap;overflow-x:auto;margin-right:calc(-1*var(--gut));padding-right:var(--gut);scrollbar-width:none;-webkit-mask-image:linear-gradient(90deg,#000 85%,transparent);mask-image:linear-gradient(90deg,#000 85%,transparent)}
+  .shp .chiprow::-webkit-scrollbar{display:none}
+  .shp .chiprow li{flex:none}
+}
+@media (min-width:900px){
+  .phero.shp .w{padding-top:30px;padding-bottom:30px}
+  .shp .hgrid{grid-template-columns:minmax(0,1.2fr) minmax(0,.8fr);column-gap:44px;grid-template-rows:auto auto auto auto 1fr}
+  .shp .hgrid>*:not(.hcol){grid-column:1}
+  .shp .trust{grid-column:1/-1!important;max-width:none;margin-top:12px}
+  .shp .lede{font-size:1.12rem;max-width:62ch}
+  .hcol{grid-column:2;grid-row:1/span 4;margin-top:0;position:relative;display:block;width:100%;max-width:500px;justify-self:end;aspect-ratio:3/2}
+  .ht{position:absolute;padding:5px;border-radius:12px;box-shadow:0 18px 40px -16px rgba(0,0,0,.75),0 0 0 1px rgba(255,255,255,.06)}
+  .ht:nth-child(1){left:0;top:0;width:64%;aspect-ratio:3/2;transform:rotate(-2deg);z-index:2}
+  .ht:nth-child(2){right:0;top:9%;width:52%;aspect-ratio:3/2;transform:rotate(2.5deg);z-index:1}
+  .ht:nth-child(3){left:7%;bottom:0;width:44%;aspect-ratio:5/4;transform:rotate(1.5deg);z-index:3}
+  .ht:nth-child(4){display:block;right:3%;bottom:2%;width:40%;aspect-ratio:5/4;transform:rotate(-2.5deg);z-index:4}
+  .ht:hover,.ht:focus-visible{z-index:5}
+  @media (prefers-reduced-motion:no-preference){.ht{transition:transform .2s var(--ease)}.ht:hover{transform:rotate(0) translateY(-4px)}}
+  #xmas{padding-top:30px}
+  .xm .head{max-width:none;margin-bottom:20px}
+  .xm .head h2{font-size:clamp(1.9rem,3vw,2.35rem)}
+  .xm .head p{margin-top:6px;max-width:none}
+}
+.sh .media{aspect-ratio:4/3}
+/* Legal 2026-11-10-shop-v2 M2: visible example-data caption under the collage */
+.hcap{grid-column:1/-1;margin:6px 0 0;font-size:.78rem;color:var(--on-ink-2,#9fb0c4)}
+@media (min-width:900px){.hcap{position:absolute;left:0;right:0;bottom:-26px;text-align:right}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://automait.au/#org", "name": "AUTOMAIT", "url": "https://automait.au/", "email": "hello@automait.au", "taxID": "ABN 82 801 716 831", "address": {"@type": "PostalAddress", "addressCountry": "AU"}, "logo": "https://automait.au/img/logo.png"}, {"@type": "ItemList", "name": "AUTOMAIT products", "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "Product", "name": "AI Front Desk Kit", "description": "Set up instant enquiry replies, missed-call texts and review requests yourself, with free tools you already have.", "brand": {"@type": "Brand", "name": "AUTOMAIT"}, "offers": {"@type": "Offer", "price": "29.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock", "url": "https://buy.stripe.com/4gM14n2N47aOa2L5Ap2B200", "seller": {"@id": "https://automait.au/#org"}}, "image": "https://automait.au/img/kit-cover.webp"}}, {"@type": "ListItem", "position": 2, "item": {"@type": "Product", "name": "Tradie Quote, Invoice & Variation Kit", "description": "Quote, invoice and variation forms that add up for you, with one GST switch.", "brand": {"@type": "Brand", "name": "AUTOMAIT"}, "offers": {"@type": "Offer", "price": "14.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock", "url": "https://buy.stripe.com/4gM3cvfzQ1Qu3En0g52B202", "seller": {"@id": "https://automait.au/#org"}}, "image": "https://automait.au/templates/img/tradie-quote.webp"}}, {"@type": "ListItem", "position": 3, "item": {"@type": "Product", "name": "Sole Trader Tax Set-Aside Tracker 2026-27", "description": "Log what comes in and goes out, and see what to put aside each month.", "brand": {"@type": "Brand", "name": "AUTOMAIT"}, "offers": {"@type": "Offer", "price": "12.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock", "url": "https://buy.stripe.com/aFa5kD73kan0b6Pd2R2B203", "seller": {"@id": "https://automait.au/#org"}}, "image": "https://automait.au/templates/img/tracker-monthly-summary.webp"}}, {"@type": "ListItem", "position": 4, "item": {"@type": "Product", "name": "2027 Australian Business Planner", "description": "A4 year planner with public holidays and BAS due dates already marked.", "brand": {"@type": "Brand", "name": "AUTOMAIT"}, "offers": {"@type": "Offer", "price": "12.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock", "url": "https://buy.stripe.com/5kQcN5evM7aOdeXbYN2B204", "seller": {"@id": "https://automait.au/#org"}}, "image": "https://automait.au/templates/img/planner-key-dates.webp"}}, {"@type": "ListItem", "position": 5, "item": {"@type": "Product", "name": "All 3 templates", "description": "Quote, Invoice & Variation Kit, Tax Set-Aside Tracker 2026-27 and 2027 Planner.", "brand": {"@type": "Brand", "name": "AUTOMAIT"}, "offers": {"@type": "Offer", "price": "29.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock", "url": "https://buy.stripe.com/00w6oHafw8eSdeXfaZ2B205", "seller": {"@id": "https://automait.au/#org"}}, "image": "https://automait.au/templates/img/planner-march-calendar.webp"}}, {"@type": "ListItem", "position": 6, "item": {"@type": "Product", "name": "AI Operator Pack", "description": "Eight SKILL.md routines for running a small online business with Hermes Agent or Claude Code.", "brand": {"@type": "Brand", "name": "AUTOMAIT"}, "offers": {"@type": "Offer", "price": "39.00", "priceCurrency": "AUD", "availability": "https://schema.org/InStock", "url": "https://buy.stripe.com/bJefZh4Vc52Gfn52od2B201", "seller": {"@id": "https://automait.au/#org"}}, "image": "https://automait.au/img/og-shop.png"}}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How do I get my files after paying?", "acceptedAnswer": {"@type": "Answer", "text": "Straight away. After you pay through Stripe, your zip file downloads (check your Downloads folder). If it doesn't, or a file won't open, email hello@automait.au and we'll send it. Nothing physical is posted."}}, {"@type": "Question", "name": "Can I get a receipt?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Stripe sends a receipt to the email you gave at checkout. No email? Ask us at hello@automait.au. We're not registered for GST, so it isn't a tax invoice."}}, {"@type": "Question", "name": "Do the templates work on my phone or in Google Sheets?", "acceptedAnswer": {"@type": "Answer", "text": "The spreadsheets open in Excel 2016+, Google Sheets (File → Import → Upload) and Numbers, and the quote kit's GST switch and totals work in Google Sheets. PDFs open on any phone. Filling in a spreadsheet is easier on a bigger screen."}}, {"@type": "Question", "name": "Is there a subscription?", "acceptedAnswer": {"@type": "Answer", "text": "None. Every price is one-off."}}, {"@type": "Question", "name": "What if it isn't useful?", "acceptedAnswer": {"@type": "Answer", "text": "Downloads: email hello@automait.au within 14 days for a full refund, no questions asked. This is in addition to your rights under the Australian Consumer Law.Setups: Consumer Law guarantees apply, including having problems fixed within a reasonable time and a refund for a major failure. See the terms of sale."}}]}]}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="mk" viewBox="0 0 32 32"><rect width="32" height="32" rx="8" fill="#132A47"/><path d="M8 9.5h16a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-9l-5 4v-4H8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z" fill="#FFD23F"/><path d="m11.5 15.5 3 3 6-6" fill="none" stroke="#0B1B2E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="mk" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#132A47"/><path d="M18 78 L51 22 L69 22 L50.14 54 L65 54 L65 65 L43.66 65 L36 78 Z" fill="#EAF0F7"/><path d="M64 22 H80 V78 H64 Z" fill="#FFD23F"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
   <symbol id="i-msg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
   <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 15l2 2 4-4"/></symbol>
@@ -66,12 +111,19 @@
   </div>
 </header>
 <main id="main">
-<section class="phero dark" aria-labelledby="h1" style="padding:0">
-  <div class="w">
+<section class="phero dark shp" aria-labelledby="h1" style="padding:0">
+  <div class="w hgrid">
     <p class="kicker"><span class="dot" aria-hidden="true"></span>For Australian tradies and small service businesses</p>
     <h1 id="h1">Everything we sell, with the price on it.</h1>
     <p class="lede">Ready-made kits and templates you can download today, or a setup we build for you at a fixed, written price. One-off prices. No subscriptions.</p>
-    <ul class="chiprow"><li><a class="fchip" href="#xmas">Christmas templates</a></li><li><a class="fchip" href="#downloads">Download today</a></li><li><a class="fchip" href="#services">We set it up for you</a></li><li><a class="fchip" href="#operator">For AI-agent builders</a></li></ul>
+    <div class="hcol">
+      <a class="ht" href="#sheet-bas"><img src="/assets/sheets/bas-dashboard-sm.webp" width="640" height="425" fetchpriority="high" decoding="async" alt="BAS &amp; GST spreadsheet dashboard with example data: income, expenses, profit, GST and set-aside charts"></a>
+      <a class="ht" href="#sheet-jobs"><img src="/assets/sheets/crm-dashboard-sm.webp" width="640" height="425" loading="lazy" decoding="async" alt="Job tracker dashboard with example data: follow-ups due, unpaid invoices and monthly revenue charts"></a>
+      <a class="ht" href="#xmas-closure-sign"><img src="/assets/xmas/christmas-closure-sign.webp" width="900" height="720" loading="lazy" decoding="async" alt="Christmas closure door sign and trading hours notice, filled in for an example shop"></a>
+      <a class="ht" href="#xmas-eoy-workbook"><img src="/assets/xmas/eoy-review-workbook.webp" width="900" height="720" loading="lazy" decoding="async" alt="End of Year Business Review workbook pages, shown with example entries"></a>
+      <p class="hcap">Previews with made-up example data</p>
+    </div>
+    <ul class="chiprow"><li><a class="fchip" href="#xmas">Christmas templates</a></li><li><a class="fchip" href="#spreadsheets">Spreadsheets</a></li><li><a class="fchip" href="#downloads">Download today</a></li><li><a class="fchip" href="#services">We set it up for you</a></li><li><a class="fchip" href="#operator">For AI-agent builders</a></li></ul>
     <p class="trust">ABN 82 801 716 831 · 14-day refund on downloads bought here · Your Australian Consumer Law rights always apply · Not registered for GST, so we don't charge GST on purchases made here</p>
   </div>
   <div class="tape" aria-hidden="true"></div>
@@ -86,10 +138,10 @@
     <ul class="fmt" aria-label="File formats"><li>DOCX</li><li>PDF</li></ul>
     <h3>Christmas Closure Sign Australia</h3>
     <p class="promise">Tell customers you're closed for Christmas in one short sitting, with signs, emails and texts written for Australian businesses.</p>
-    <p class="pr"><b>A$9</b><span>AUD one-off</span></p>
+    <p class="pr"><b>A$9</b><span>on Etsy · A$9.90 if Etsy adds GST</span></p>
     <ul class="ticks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Closure notice, door signs and trading hours notice (dates filled in for 2026-27)</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Email, out-of-office, SMS and voicemail wording</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>9-page fillable PDF + editable Word files</span></li></ul><p class="fnote">AU public holidays Dec 2026 to Jan 2027 from Fair Work. Wording is general, not legal advice.</p>
     <div class="act">
-      <a class="btn btn-go" href="https://www.etsy.com/listing/4613689611" rel="noopener" aria-label="Buy on Etsy: Christmas Closure Sign Australia, A$9 (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
+      <a class="btn btn-go" href="https://www.etsy.com/listing/4613689611" rel="noopener" aria-label="Buy on Etsy: Christmas Closure Sign Australia, A$9, or A$9.90 if Etsy adds GST (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
       <p class="micro">Checkout and download on Etsy</p>
     </div>
   </div>
@@ -100,10 +152,10 @@
     <ul class="fmt" aria-label="File formats"><li>DOCX</li><li>PDF</li></ul>
     <h3>Christmas Closure Notice Bundle, 6 editions</h3>
     <p class="promise">All six Australian Christmas and summer closure packs in one download.</p>
-    <p class="pr"><b>A$29</b><span>AUD one-off</span></p>
-    <ul class="ticks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Small business, Tradie, Cleaning, Salon &amp; beauty, Cafe &amp; hospitality, Clinic &amp; allied health</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>A$44 if bought separately</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Licence: your own business, plus finished notices for clients you work for directly</span></li></ul>
+    <p class="pr"><b>A$29</b><span>on Etsy · A$31.90 if Etsy adds GST</span></p>
+    <ul class="ticks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Small business, Tradie, Cleaning, Salon &amp; beauty, Cafe &amp; hospitality, Clinic &amp; allied health</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>A$44 if bought separately (A$48.40 if Etsy adds GST)</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Licence: your own business, plus finished notices for clients you work for directly</span></li></ul>
     <div class="act">
-      <a class="btn btn-go" href="https://www.etsy.com/listing/4613690415" rel="noopener" aria-label="Buy on Etsy: Christmas Closure Notice Bundle, 6 editions, A$29 (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
+      <a class="btn btn-go" href="https://www.etsy.com/listing/4613690415" rel="noopener" aria-label="Buy on Etsy: Christmas Closure Notice Bundle, 6 editions, A$29, or A$31.90 if Etsy adds GST (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
       <p class="micro">Checkout and download on Etsy</p>
     </div>
   </div>
@@ -114,10 +166,10 @@
     <ul class="fmt" aria-label="File formats"><li>PDF</li><li>DOCX</li></ul>
     <h3>Client Christmas Messages</h3>
     <p class="promise">Thank your clients for the year in 30 minutes: pick a message, swap the [brackets], check the dates, send.</p>
-    <p class="pr"><b>A$9</b><span>AUD one-off</span></p>
+    <p class="pr"><b>A$9</b><span>on Etsy · A$9.90 if Etsy adds GST</span></p>
     <ul class="ticks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>31 messages for email, cards, SMS and social posts</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>8 industry swap lines and 10 subject lines</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Spam Act basics: consent, identify, unsubscribe</span></li></ul><p class="fnote">General information, not legal advice.</p>
     <div class="act">
-      <a class="btn btn-go" href="https://www.etsy.com/listing/4613705774" rel="noopener" aria-label="Buy on Etsy: Client Christmas Messages, A$9 (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
+      <a class="btn btn-go" href="https://www.etsy.com/listing/4613705774" rel="noopener" aria-label="Buy on Etsy: Client Christmas Messages, A$9, or A$9.90 if Etsy adds GST (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
       <p class="micro">Checkout and download on Etsy</p>
     </div>
   </div>
@@ -127,9 +179,9 @@
     <ul class="fmt" aria-label="File formats"><li>DOCX</li><li>PDF</li></ul>
     <h3>Industry editions</h3>
     <p class="promise">The Christmas closure pack plus an extra page made for your industry.</p>
-    <p class="pr"><b>A$7</b><span>AUD one-off, each</span></p>
+    <p class="pr"><b>A$7</b><span>each, on Etsy · A$7.70 if Etsy adds GST</span></p>
     <p class="xm-lbl">Buy on Etsy:</p>
-    <ul class="xm-chips"><li><a href="https://www.etsy.com/listing/4613705134" rel="noopener" aria-label="Buy the Tradie edition on Etsy, A$7 (opens Etsy)"><span><span class="en">Tradie</span><span class="ex">emergency call-out sign</span></span><b>A$7</b></a></li><li><a href="https://www.etsy.com/listing/4613689913" rel="noopener" aria-label="Buy the Cleaner edition on Etsy, A$7 (opens Etsy)"><span><span class="en">Cleaner</span><span class="ex">client schedule-change card + planner</span></span><b>A$7</b></a></li><li><a href="https://www.etsy.com/listing/4613690065" rel="noopener" aria-label="Buy the Salon and beauty edition on Etsy, A$7 (opens Etsy)"><span><span class="en">Salon &amp; beauty</span><span class="ex">book-before-Christmas poster</span></span><b>A$7</b></a></li><li><a href="https://www.etsy.com/listing/4613705450" rel="noopener" aria-label="Buy the Cafe and hospitality edition on Etsy, A$7 (opens Etsy)"><span><span class="en">Cafe &amp; hospitality</span><span class="ex">public holiday surcharge sign + holiday roster</span></span><b>A$7</b></a></li><li><a href="https://www.etsy.com/listing/4613705586" rel="noopener" aria-label="Buy the Clinic and allied health edition on Etsy, A$7 (opens Etsy)"><span><span class="en">Clinic &amp; allied health</span><span class="ex">urgent-care information sign (admin notice, not medical advice)</span></span><b>A$7</b></a></li></ul>
+    <ul class="xm-chips"><li><a href="https://www.etsy.com/listing/4613705134" rel="noopener" aria-label="Buy the Tradie edition on Etsy, A$7, or A$7.70 if Etsy adds GST (opens Etsy)"><span><span class="en">Tradie</span><span class="ex">emergency call-out sign</span></span><b>A$7</b></a></li><li><a href="https://www.etsy.com/listing/4613689913" rel="noopener" aria-label="Buy the Cleaner edition on Etsy, A$7, or A$7.70 if Etsy adds GST (opens Etsy)"><span><span class="en">Cleaner</span><span class="ex">client schedule-change card + planner</span></span><b>A$7</b></a></li><li><a href="https://www.etsy.com/listing/4613690065" rel="noopener" aria-label="Buy the Salon and beauty edition on Etsy, A$7, or A$7.70 if Etsy adds GST (opens Etsy)"><span><span class="en">Salon &amp; beauty</span><span class="ex">book-before-Christmas poster</span></span><b>A$7</b></a></li><li><a href="https://www.etsy.com/listing/4613705450" rel="noopener" aria-label="Buy the Cafe and hospitality edition on Etsy, A$7, or A$7.70 if Etsy adds GST (opens Etsy)"><span><span class="en">Cafe &amp; hospitality</span><span class="ex">public holiday surcharge sign + holiday roster</span></span><b>A$7</b></a></li><li><a href="https://www.etsy.com/listing/4613705586" rel="noopener" aria-label="Buy the Clinic and allied health edition on Etsy, A$7, or A$7.70 if Etsy adds GST (opens Etsy)"><span><span class="en">Clinic &amp; allied health</span><span class="ex">urgent-care information sign (admin notice, not medical advice)</span></span><b>A$7</b></a></li></ul>
   </div>
 </article>
       <article class="pc" id="xmas-eoy-workbook">
@@ -138,16 +190,66 @@
     <ul class="fmt" aria-label="File formats"><li>PDF</li><li>XLSX</li></ul>
     <h3>End of Year Business Review + 2027 Plan</h3>
     <p class="promise">Look back on your year in numbers, then turn it into three goals, monthly targets and a 90-day plan.</p>
-    <p class="pr"><b>A$15</b><span>AUD one-off</span></p>
+    <p class="pr"><b>A$15</b><span>on Etsy · A$16.50 if Etsy adds GST</span></p>
     <ul class="ticks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>16-page printable A4 workbook</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Excel companion: profit, margin and 2027 monthly targets calculate for you</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Calendar year or financial year</span></li></ul><p class="fnote">A planning tool, not financial or tax advice.</p>
     <div class="act">
-      <a class="btn btn-go" href="https://www.etsy.com/listing/4613705888" rel="noopener" aria-label="Buy on Etsy: End of Year Business Review + 2027 Plan, A$15 (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
+      <a class="btn btn-go" href="https://www.etsy.com/listing/4613705888" rel="noopener" aria-label="Buy on Etsy: End of Year Business Review + 2027 Plan, A$15, or A$16.50 if Etsy adds GST (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
       <p class="micro">Checkout and download on Etsy</p>
     </div>
   </div>
 </article>
     </div>
-    <p class="svc-note"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><span>These templates are sold on Etsy. You'll check out on Etsy, under Etsy's terms and privacy policy, and download your files from Etsy. The refund policy on each Etsy listing applies; your Australian Consumer Law rights apply either way. Etsy may add GST at checkout for Australian buyers.</span></p>
+    <p class="svc-note"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><span>These templates are sold on Etsy. Prices shown are Etsy listing prices in AUD. For buyers in Australia, Etsy may add 10% GST at checkout (for example, A$24 becomes A$26.40), and Etsy shows the full total before you pay. You'll check out on Etsy, under Etsy's terms and privacy policy, and download your files from Etsy. The refund policy on each Etsy listing applies; your Australian Consumer Law rights apply either way.</span></p>
+  </div>
+</section>
+<section id="spreadsheets" class="xm sh" aria-labelledby="sh-h" style="padding-top:0">
+  <div class="w">
+    <div class="head"><h2 id="sh-h">Bookkeeping &amp; admin spreadsheets</h2><p>Spreadsheets for Australian sole traders, households and service businesses, sold through our Etsy shop. Each one works in Google Sheets and Excel.</p></div>
+    <div class="grid g3">
+      <article class="pc" id="sheet-bas">
+  <div class="media"><img src="/assets/sheets/bas-gst-bookkeeping.webp" width="800" height="600" loading="lazy" decoding="async" alt="BAS &amp; GST Tracker 2026-27 preview: dashboard, monthly summary and BAS quarters, shown with made-up example figures."><span class="exchip">Example data</span></div>
+  <div class="body">
+    <ul class="fmt" aria-label="File formats"><li>XLSX</li><li>Opens in Google Sheets</li></ul>
+    <h3>Sole Trader BAS/GST Bookkeeping Spreadsheet 2026-27</h3>
+    <p class="promise">Log what you earn and spend, and see GST, profit, what to put aside and your quarterly BAS figures (G1, 1A, 1B) on one dashboard.</p>
+    <p class="pr"><b>A$24</b><span>on Etsy · A$26.40 if Etsy adds GST</span></p>
+    <ul class="ticks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Income and expense logs (1,000 rows each), with business-use % for mixed items</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>BAS Quarters tab: G1, 1A, 1B and net GST per quarter (cash basis)</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Works in Google Sheets and Excel. BLANK + EXAMPLE files</span></li></ul><p class="fnote">Not tax, legal or financial advice, and it doesn't lodge anything. The BAS helper is for quarterly, cash-basis GST reporters.</p>
+    <div class="act">
+      <a class="btn btn-go" href="https://www.etsy.com/listing/4613725229/bas-spreadsheet-australia-2026-27-sole" rel="noopener" aria-label="Buy on Etsy: BAS/GST Bookkeeping Spreadsheet, A$24, or A$26.40 if Etsy adds GST (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
+      <p class="micro">Checkout and download on Etsy</p>
+    </div>
+  </div>
+</article>
+      <article class="pc" id="sheet-budget">
+  <div class="media"><img src="/assets/sheets/fortnightly-budget-planner.webp" width="800" height="600" loading="lazy" decoding="async" alt="Fortnightly Budget AU preview: budget dashboard, savings goals and fortnight-by-fortnight table, shown with made-up example figures."><span class="exchip">Example data</span></div>
+  <div class="body">
+    <ul class="fmt" aria-label="File formats"><li>XLSX</li><li>Opens in Google Sheets</li></ul>
+    <h3>Fortnightly Budget Planner with HECS &amp; Super</h3>
+    <p class="promise">Budget around your fortnightly pay, track what you actually spend, hit savings goals, and see a HECS/HELP and super estimate on one dashboard.</p>
+    <p class="pr"><b>A$14</b><span>on Etsy · A$15.40 if Etsy adds GST</span></p>
+    <ul class="ticks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Bills entered weekly, monthly, quarterly or yearly convert to a per-fortnight amount</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>All 26 pay cycles, planned vs actual, and up to 12 savings goals</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Works in Google Sheets and Excel. BLANK + EXAMPLE files</span></li></ul><p class="fnote">Not financial, tax or legal advice. HECS/HELP and super figures are estimates from numbers you enter.</p>
+    <div class="act">
+      <a class="btn btn-go" href="https://www.etsy.com/listing/4613740402/fortnightly-budget-spreadsheet-australia" rel="noopener" aria-label="Buy on Etsy: Fortnightly Budget Planner, A$14, or A$15.40 if Etsy adds GST (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
+      <p class="micro">Checkout and download on Etsy</p>
+    </div>
+  </div>
+</article>
+      <article class="pc" id="sheet-jobs">
+  <div class="media"><img src="/assets/sheets/job-tracker-crm.webp" width="800" height="600" loading="lazy" decoding="async" alt="Job Tracker &amp; CRM preview: pipeline dashboard, quotes and invoices tabs, shown with made-up example figures."><span class="exchip">Example data</span></div>
+  <div class="body">
+    <ul class="fmt" aria-label="File formats"><li>XLSX</li><li>Opens in Google Sheets</li></ul>
+    <h3>Job Tracker &amp; Mini CRM for tradies and cleaners</h3>
+    <p class="promise">Track every lead from quote to job to invoice to paid, and see who to follow up today and what's overdue.</p>
+    <p class="pr"><b>A$24</b><span>on Etsy · A$26.40 if Etsy adds GST</span></p>
+    <ul class="ticks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Clients, Quotes, Jobs and Invoices tabs (500 rows each)</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Flags finished jobs that haven't been invoiced, and overdue invoices</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Works in Google Sheets and Excel. BLANK + EXAMPLE files</span></li></ul><p class="fnote">Tracks invoices, doesn't create tax invoices. Not legal, tax or financial advice.</p>
+    <div class="act">
+      <a class="btn btn-go" href="https://www.etsy.com/listing/4613725581/job-tracker-spreadsheet-for-tradies" rel="noopener" aria-label="Buy on Etsy: Job Tracker and Mini CRM, A$24, or A$26.40 if Etsy adds GST (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
+      <p class="micro">Checkout and download on Etsy</p>
+    </div>
+  </div>
+</article>
+    </div>
+    <p class="svc-note"><svg class="i" aria-hidden="true"><use href="#i-info"/></svg><span>These templates are sold on Etsy. Prices shown are Etsy listing prices in AUD. For buyers in Australia, Etsy may add 10% GST at checkout (for example, A$24 becomes A$26.40), and Etsy shows the full total before you pay. You'll check out on Etsy, under Etsy's terms and privacy policy, and download your files from Etsy. The refund policy on each Etsy listing applies; your Australian Consumer Law rights apply either way.</span></p>
   </div>
 </section>
 <section id="downloads" aria-labelledby="dl-h" style="padding-top:0">
@@ -155,7 +257,7 @@
     <div class="head"><h2 id="dl-h">Download today</h2><p>Kits and templates for Australian tradies and sole traders. Pay once, download straight away.</p></div>
     <div class="grid g3">
       <article class="pc" id="front-desk-kit">
-  <div class="media ink"><img src="/img/kit-cover.webp" width="497" height="702" fetchpriority="high" decoding="async" alt="Cover of the AI Front Desk Kit PDF"><span class="dchip">DIY</span></div>
+  <div class="media ink"><img src="/img/kit-cover.webp" width="497" height="702" loading="lazy" decoding="async" alt="Cover of the AI Front Desk Kit PDF"><span class="dchip">DIY</span></div>
   <div class="body">
     <ul class="fmt" aria-label="File formats"><li>PDF</li><li>DOCX</li></ul>
     <h3>AI Front Desk Kit</h3>
@@ -170,7 +272,7 @@
   </div>
 </article>
       <article class="pc" id="quote-invoice-kit">
-  <div class="media "><img src="/templates/img/tradie-quote.webp" width="696" height="847" fetchpriority="high" decoding="async" alt="Quote sheet filled in for an example plumbing business, with line items, GST and total."><span class="exchip">Example data</span></div>
+  <div class="media "><img src="/templates/img/tradie-quote.webp" width="696" height="847" loading="lazy" decoding="async" alt="Quote sheet filled in for an example plumbing business, with line items, GST and total."><span class="exchip">Example data</span></div>
   <div class="body">
     <ul class="fmt" aria-label="File formats"><li>XLSX</li><li>DOCX</li><li>PDF</li></ul>
     <h3>Tradie Quote, Invoice &amp; Variation Kit</h3>

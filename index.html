@@ -461,6 +461,9 @@ footer .fbrand{margin-bottom:10px}
 .launch .lm .i{width:20px;height:20px}
 .launch small{display:block;font-size:.72rem;font-weight:700;opacity:.8}
 @media (max-width:559px){.launch{padding:6px 16px 6px 6px;min-height:52px;font-size:.95rem}.launch .lm{width:36px;height:36px}.launch .long{display:none}}
+/* smaller pill with safe offsets; hidden (.away) while it would sit on top of the hero */
+.launch{right:max(20px,env(safe-area-inset-right));bottom:max(20px,env(safe-area-inset-bottom));min-height:48px;gap:8px;padding:5px 16px 5px 5px;font-size:.92rem;box-shadow:0 10px 26px -10px rgba(11,27,46,.55)}
+.launch .lm{width:36px;height:36px}.launch .lm .i{width:18px;height:18px}.launch small{font-size:.68rem}
 .launch[hidden],.panel[hidden]{display:none}
 .launch.away{opacity:0;transform:translateY(24px);pointer-events:none;visibility:hidden}
 .launch{transition:opacity .25s,transform .25s var(--ease),visibility .25s,background-color .2s}
@@ -924,10 +927,12 @@ footer .fbrand{margin-bottom:10px}
   }
   function close(){panel.hidden=true;panel.classList.remove('on');launch.hidden=false;launch.setAttribute('aria-expanded','false');document.body.classList.remove('chat-open');(lastFocus&&lastFocus!==document.body?lastFocus:launch).focus()}
   launch.hidden=false;
-  // On phones, keep the hero clear: show the launcher once the visitor scrolls past the hero buttons
-  var mq=matchMedia('(max-width:559px)');
-  function peek(){launch.classList.toggle('away',mq.matches&&window.scrollY<420)}
-  peek();addEventListener('scroll',peek,{passive:true});mq.addEventListener&&mq.addEventListener('change',peek);
+  // Keep the hero clear on every screen size: show the launcher only once the hero no longer reaches
+  // the bottom corner where the launcher sits (the hero has its own 'Chat with our demo front desk' button)
+  var hero=document.querySelector('.hero'),tick=0;
+  function peek(){tick=0;launch.classList.toggle('away',!!hero&&hero.getBoundingClientRect().bottom>innerHeight-96)}
+  function req(){if(!tick){tick=1;requestAnimationFrame(peek)}}
+  peek();addEventListener('scroll',req,{passive:true});addEventListener('resize',req);
   launch.addEventListener('click',open);closeB.addEventListener('click',close);
   document.querySelectorAll('[data-open-chat]').forEach(function(b){b.addEventListener('click',open)});
   document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden)close()});
