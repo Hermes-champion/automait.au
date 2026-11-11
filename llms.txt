@@ -15,4 +15,5 @@
 - Review engine: from A$149 one-off
 
 ## More
+- [Free markup vs margin calculator for tradies](https://automait.au/tools/tradie-markup-margin-calculator/)
 - [Shop](https://automait.au/shop/) · [Blog](https://automait.au/blog/) · [Terms of sale](https://automait.au/terms/) · [Privacy](https://automait.au/privacy/) · hello@automait.au
