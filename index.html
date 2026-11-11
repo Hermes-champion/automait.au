@@ -898,7 +898,7 @@ footer .fbrand{margin-bottom:10px}
     var v=text.trim();
     if(lead.step==='name'){lead.name=v;lead.step='biz';bot('Thanks '+esc(v)+'. What\u2019s the business called, and what do you do?',[]);return}
     if(lead.step==='biz'){lead.biz=v;lead.step='email';bot('What email should the quote go to?',[]);return}
-    if(lead.step==='email'){if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){bot('That doesn\u2019t look like an email address. Could you check it? For example: you@yourbusiness.com.au',[]);return}lead.email=v;lead.step='need';bot('Last one: what would you like help with?',['Replying to enquiries','Bookings & follow-up','Google reviews','Not sure yet']);return}
+    if(lead.step==='email'){if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)){bot('That doesn\u2019t look like an email address. Could you check it? For example: you@yourbusiness.example',[]);return}lead.email=v;lead.step='need';bot('Last one: what would you like help with?',['Replying to enquiries','Bookings & follow-up','Google reviews','Not sure yet']);return}
     if(lead.step==='need'){lead.need=v;finish();}
   }
   function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
