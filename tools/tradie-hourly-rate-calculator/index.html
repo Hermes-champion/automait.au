@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Tradie hourly rate calculator (Australia) | AUTOMAIT</title>
+<meta name="description" content="Free hourly rate calculator for Australian tradies and sole traders. Work out your break-even rate from income, running costs, super and billable hours.">
+<meta name="theme-color" content="#0B1B2E">
+<link rel="canonical" href="https://automait.au/tools/tradie-hourly-rate-calculator/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AUTOMAIT"><meta property="og:locale" content="en_AU">
+<meta property="og:title" content="Tradie hourly rate calculator (Australia) | AUTOMAIT"><meta property="og:description" content="Free hourly rate calculator for Australian tradies and sole traders. Work out your break-even rate from income, running costs, super and billable hours."><meta property="og:url" content="https://automait.au/tools/tradie-hourly-rate-calculator/">
+<meta property="og:image" content="https://automait.au/img/og-shop.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Tradie hourly rate calculator (Australia) | AUTOMAIT"><meta name="twitter:description" content="Free hourly rate calculator for Australian tradies and sole traders. Work out your break-even rate from income, running costs, super and billable hours."><meta name="twitter:image" content="https://automait.au/img/og-shop.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* calculator page (page-scoped; uses site.css tokens) */
+.calc{display:grid;gap:24px;align-items:start}
+@media (min-width:900px){.calc{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px}.res{position:sticky;top:92px}}
+.cform{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:22px 20px 24px}
+@media (min-width:600px){.cform{padding:30px 30px 32px}}
+.cform h2,.res h2{font-size:clamp(1.35rem,3vw,1.6rem);line-height:1.15}
+.exnote{margin-top:8px;color:var(--muted);font-size:.95rem}
+.fgrid2{display:grid;gap:18px;margin-top:22px}
+@media (min-width:600px){.fgrid2{grid-template-columns:1fr 1fr}.fgrid2 .full{grid-column:1/-1}}
+.fld{min-width:0}
+.fld>label,.seg legend{display:block;font-weight:700;line-height:1.3;margin-bottom:4px}
+.hint{display:block;font-size:.92rem;line-height:1.45;color:var(--muted);margin-bottom:8px}
+.inp{display:flex;align-items:center;min-height:52px;border:1.5px solid #6B7A8D;border-radius:12px;background:#fff;transition:border-color .18s var(--ease)}
+.inp:focus-within{outline:3px solid var(--ink);outline-offset:2px}
+.inp .ad{flex:none;padding:0 4px 0 14px;font-weight:700;color:var(--muted)}
+.inp .ad.suf{padding:0 14px 0 4px}
+.inp input{flex:1;min-width:0;width:100%;border:0;background:transparent;font:600 1.125rem/1.2 var(--body);color:var(--text);padding:13px 14px 13px 4px;outline:none}
+.inp input:focus-visible{outline:none}
+.inp:has(input[aria-invalid=true]){border-color:#B42318;border-width:2px}
+.err{color:#B42318;font-size:.92rem;font-weight:600;margin-top:6px}
+.err:empty{display:none}
+.seg{border:0;padding:0;margin:0;min-width:0}
+.segs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid #6B7A8D;border-radius:12px;overflow:hidden;background:#fff}
+.segs label{position:relative;cursor:pointer}
+.segs span{display:flex;align-items:center;justify-content:center;min-height:48px;padding:8px 10px;font-weight:700;text-align:center;transition:background-color .18s var(--ease),color .18s var(--ease)}
+.segs label+label span{border-left:1.5px solid #6B7A8D}
+.segs input:checked+span{background:var(--ink);color:var(--on-ink)}
+.segs input:focus-visible+span{outline:3px solid var(--hivis);outline-offset:-6px;border-radius:8px;box-shadow:inset 0 0 0 7px var(--ink)}
+.segs input:not(:checked)+span:hover{background:var(--paper)}
+.swrow{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:52px;padding:10px 0;border-top:1px solid var(--line);margin-top:4px;cursor:pointer}
+.swrow b{display:block}
+.swrow .hint{margin:2px 0 0}
+.sw{appearance:none;-webkit-appearance:none;flex:none;position:relative;width:56px;height:32px;margin:0;border-radius:999px;background:#6B7A8D;cursor:pointer;transition:background-color .18s var(--ease)}
+.sw::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(11,27,46,.35);transition:transform .18s var(--ease)}
+.sw:checked{background:var(--go)}
+.sw:checked::after{transform:translateX(24px)}
+.sw:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.rowbtn{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn-sm{min-height:44px;padding:10px 16px;font-size:.97rem;cursor:pointer;background:transparent}
+.res{border-radius:var(--r-card);padding:22px 20px 24px;overflow:hidden}
+@media (min-width:600px){.res{padding:30px}}
+.qbig{margin-top:16px;padding:16px 18px;border-radius:14px;background:var(--ink-2)}
+.qbig .lab{display:block;color:var(--on-ink-muted);font-weight:600;font-size:.95rem}
+.qbig .val{display:block;margin-top:4px;font:800 clamp(2rem,7vw,2.6rem)/1.05 var(--display);letter-spacing:-.02em;color:var(--hivis);overflow-wrap:anywhere}
+.rlist{margin:16px 0 0;display:grid}
+.rlist>div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid rgba(234,240,247,.14)}
+.rlist>div[hidden]{display:none}
+.rlist dt{color:var(--on-ink-muted)}
+.rlist dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums;text-align:right;overflow-wrap:anywhere}
+.conv{margin-top:14px;padding:12px 14px;border-left:4px solid var(--hivis);background:rgba(234,240,247,.06);border-radius:0 10px 10px 0}
+.rmsg{margin-top:14px;padding:12px 14px;border-radius:10px;background:#3A1F24;color:#FFE3DE;font-weight:600}
+.rmsg:empty{display:none}
+.res .small{margin-top:14px;font-size:.92rem;color:var(--on-ink-muted)}
+.res .small a{color:var(--on-ink);font-weight:600}
+.reftab{width:100%;max-width:420px;border-collapse:collapse;display:table!important;background:var(--surface)}
+.reftab caption{text-align:left;font-weight:700;margin-bottom:8px}
+.reftab th{background:var(--ink);color:var(--on-ink)}
+.reftab td,.reftab th{font-variant-numeric:tabular-nums}
+.formula{list-style:none;padding:0!important}
+.formula li{padding:10px 14px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.disc{margin-top:28px}
+.endcard .pc .media.kitm{aspect-ratio:696/847;background:#fff}
+.endcard .pc .media.kitm img{object-fit:contain;object-position:center top;padding:12px}
+@media (min-width:700px){.endcard .pc .media.kitm{align-self:start}}
+.legal{margin-top:10px}
+.faq{margin-top:18px}
+/* hourly rate page additions */
+.rlist dt{min-width:0}
+.rlist dd{white-space:nowrap;overflow-wrap:normal}
+.ex-tag{display:inline-block;font-size:.78rem;font-weight:700;padding:3px 8px;border-radius:var(--r-chip);background:var(--hivis);color:var(--ink);vertical-align:2px;margin-right:6px}
+.exbox{padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.exbox ol{padding-left:1.3em}
+.endcard .pc .media.bun{aspect-ratio:800/600;background:#fff}
+.endcard .pc .media.bun img{object-fit:contain;object-position:center top;padding:12px}
+@media (min-width:700px){.endcard .pc .media.bun{align-self:start}}
+.endcard .alt{margin-top:14px;font-size:.97rem}
+.endcard .alt a{color:var(--ink);font-weight:600}
+@media (prefers-reduced-motion:reduce){.inp,.segs span,.sw,.sw::after{transition:none}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Hourly rate calculator for Australian tradies and sole traders", "url": "https://automait.au/tools/tradie-hourly-rate-calculator/", "description": "Free hourly rate calculator for Australian tradies and sole traders. Work out your break-even rate from income, running costs, super and billable hours.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (runs in a web browser)", "browserRequirements": "Requires JavaScript", "inLanguage": "en-AU", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "AUD"}, "publisher": {"@type": "Organization", "name": "AUTOMAIT", "url": "https://automait.au/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this calculator work out my income tax?", "acceptedAnswer": {"@type": "Answer", "text": "No. The income figure is what you want to earn before tax, so your income tax comes out of it. The calculator doesn't work out tax, Medicare levy or anything you set aside for it. This isn't tax advice. For tax, check ato.gov.au or talk to a registered tax agent."}}, {"@type": "Question", "name": "Do I have to pay myself super as a sole trader?", "acceptedAnswer": {"@type": "Answer", "text": "The ATO says self-employed sole traders and partners don't have to pay super guarantee for themselves, but can choose to make personal super contributions. The 12% filled in is the super guarantee rate employers pay for employees from 1 July 2025. It's there so you can budget for super if you want to. Set it to 0 to leave super out."}}, {"@type": "Question", "name": "Should I add GST to my hourly rate?", "acceptedAnswer": {"@type": "Answer", "text": "Only if you're registered for GST. If you are, add 10% GST on top of your rate when you quote and invoice. Switch on “I'm registered for GST” and the calculator shows the rate with GST added. If you're not registered, don't add GST to your quotes or invoices."}}, {"@type": "Question", "name": "What counts as business running costs?", "acceptedAnswer": {"@type": "Answer", "text": "Costs of running the business across the year that aren't tied to one job: for example vehicle costs, insurance, tools and equipment, phone, software and subscriptions, licences and accounting fees. Materials for a particular job are usually charged on that job's quote instead. Our markup vs margin calculator can help price those."}}, {"@type": "Question", "name": "What is the buffer for?", "acceptedAnswer": {"@type": "Answer", "text": "The break-even rate only covers the figures you entered. A buffer gives you room for things that are hard to plan: quiet weeks, jobs that run over, invoices paid late or not at all, and costs that go up during the year. 15% is just a starting figure, not a recommended profit margin. Change it to suit your business."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://automait.au/"}, {"@type": "ListItem", "position": 2, "name": "Free tools", "item": "https://automait.au/tools/"}, {"@type": "ListItem", "position": 3, "name": "Hourly rate calculator", "item": "https://automait.au/tools/tradie-hourly-rate-calculator/"}]}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mk" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#132A47"/><path d="M18 78 L51 22 L69 22 L50.14 54 L65 54 L65 65 L43.66 65 L36 78 Z" fill="#EAF0F7"/><path d="M64 22 H80 V78 H64 Z" fill="#FFD23F"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 15l2 2 4-4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-phoneoff" viewBox="0 0 24 24"><path d="M10.7 13.3a16 16 0 0 0 3.4 2.6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 4.2 2 2 0 0 1 5.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8.9 9.8M22 2 2 22"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-5 4 5 4M16 8l5 4-5 4"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="top dark">
+  <div class="w">
+    <a class="brand" href="/" aria-label="AUTOMAIT home"><svg class="mark" aria-hidden="true"><use href="#mk"/></svg><span class="word">AUTOM<b>AI</b>T</span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="l keep" href="/shop/">Shop</a><a class="l" href="/#services">Services</a><a class="l" href="/templates/">Templates</a><a class="l" href="/blog/">Blog</a><a class="l" href="/#faq">FAQ</a>
+      <a class="btn btn-go" href="mailto:hello@automait.au?subject=Fixed-price%20quote%20request&amp;body=Business%20name%3A%0AWhat%20you%20do%3A%0AHow%20enquiries%20reach%20you%20now%20(phone%2C%20web%20form%2C%20email%2C%20Facebook)%3A%0AWhat%20you%27d%20like%20help%20with%3A%0A">Get a quote</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="phero dark sm" aria-labelledby="h1" style="padding:0"><div class="w"><a class="back" href="/tools/">← Free tools</a><h1 id="h1">Hourly rate calculator for tradies and sole traders</h1><p class="lede">Work out the hourly rate you need to cover your income, running costs and super from the hours you can actually bill. Add GST only if you're registered. Free. All the maths happens in your browser: nothing you type is saved or sent anywhere.</p></div><div class="tape" aria-hidden="true"></div></section>
+
+<section aria-label="Calculator"><div class="w">
+<div class="calc">
+<form class="cform" id="calc" novalidate aria-labelledby="calc-h">
+  <h2 id="calc-h">Your year</h2>
+  <p class="exnote"><svg class="i" aria-hidden="true" style="width:18px;height:18px;vertical-align:-3px;fill:none;stroke:currentColor;stroke-width:2"><use href="#i-info"/></svg> The income and costs filled in are example figures. Replace them with your own.</p>
+  <div class="fgrid2">
+    <div class="fld full">
+      <label for="income">Income you want per year (A$)</label>
+      <span class="hint" id="income-h">What you want to pay yourself, before tax.</span>
+      <div class="inp"><span class="ad" aria-hidden="true">$</span><input id="income" name="income" type="text" inputmode="decimal" autocomplete="off" value="80000" aria-describedby="income-h income-e"></div>
+      <p class="err" id="income-e"></p>
+    </div>
+    <div class="fld full">
+      <label for="costs">Business running costs per year (A$)</label>
+      <span class="hint" id="costs-h">Vehicle, insurance, tools, phone, software and other yearly costs.</span>
+      <div class="inp"><span class="ad" aria-hidden="true">$</span><input id="costs" name="costs" type="text" inputmode="decimal" autocomplete="off" value="20000" aria-describedby="costs-h costs-e"></div>
+      <p class="err" id="costs-e"></p>
+    </div>
+    <div class="fld full">
+      <label for="superPct">Super set-aside (%)</label>
+      <span class="hint" id="superPct-h">% of your income figure. 12% matches the employer super rate. Sole traders don't have to pay themselves super: enter 0 to leave it out.</span>
+      <div class="inp"><input id="superPct" name="superPct" type="text" inputmode="decimal" autocomplete="off" value="12" aria-describedby="superPct-h superPct-e" style="padding-left:14px"><span class="ad suf" aria-hidden="true">%</span></div>
+      <p class="err" id="superPct-e"></p>
+    </div>
+    <div class="fld">
+      <label for="weeks">Weeks worked per year</label>
+      <span class="hint" id="weeks-h">After holidays, public holidays and sick days.</span>
+      <div class="inp"><input id="weeks" name="weeks" type="text" inputmode="decimal" autocomplete="off" value="46" aria-describedby="weeks-h weeks-e" style="padding-left:14px"><span class="ad suf" aria-hidden="true">wks</span></div>
+      <p class="err" id="weeks-e"></p>
+    </div>
+    <div class="fld">
+      <label for="hours">Billable hours per week</label>
+      <span class="hint" id="hours-h">Hours you can charge for, not every hour you work.</span>
+      <div class="inp"><input id="hours" name="hours" type="text" inputmode="decimal" autocomplete="off" value="30" aria-describedby="hours-h hours-e" style="padding-left:14px"><span class="ad suf" aria-hidden="true">hrs</span></div>
+      <p class="err" id="hours-e"></p>
+    </div>
+    <div class="fld full">
+      <label for="buffer">Buffer or profit (%)</label>
+      <span class="hint" id="buffer-h">Added on top of break-even. Enter 0 for break-even only.</span>
+      <div class="inp"><input id="buffer" name="buffer" type="text" inputmode="decimal" autocomplete="off" value="15" aria-describedby="buffer-h buffer-e" style="padding-left:14px"><span class="ad suf" aria-hidden="true">%</span></div>
+      <p class="err" id="buffer-e"></p>
+    </div>
+    <label class="swrow full" for="gst">
+      <span><b>I'm registered for GST</b><span class="hint" id="gst-h">Adds 10% GST to the rate you charge. Leave off if you're not registered.</span></span>
+      <input class="sw" id="gst" name="gst" type="checkbox" role="switch" aria-describedby="gst-h">
+    </label>
+  </div>
+  <div class="rowbtn"><button class="btn btn-line btn-sm" type="button" id="reset">Reset to example figures</button></div>
+</form>
+
+<div class="res dark" id="results" aria-labelledby="res-h">
+  <h2 id="res-h">Your rate</h2>
+  <p class="rmsg" id="rmsg" role="alert"></p>
+  <p class="qbig"><span class="lab" id="q-lab">Hourly rate to charge (no GST)</span><span class="val" id="q-val">$91.33</span></p>
+  <dl class="rlist">
+    <div><dt>Break-even hourly rate</dt><dd id="r-be">$79.42</dd></div>
+    <div><dt id="r-rate-l">Rate with 15% buffer, ex GST</dt><dd id="r-rate">$91.33</dd></div>
+    <div id="r-gst-row" hidden><dt>GST (10%) per hour</dt><dd id="r-gst">$0.00</dd></div>
+    <div><dt id="r-day-l">Day rate, 8 hours (no GST)</dt><dd id="r-day">$730.67</dd></div>
+    <div><dt>Break-even day rate</dt><dd id="r-beday">$635.36</dd></div>
+    <div><dt>Billable hours per year</dt><dd id="r-hours">1,380</dd></div>
+    <div><dt>Yearly amount to cover</dt><dd id="r-need">$109,600</dd></div>
+    <div><dt>Yearly billings at this rate, ex GST</dt><dd id="r-year">$126,040</dd></div>
+  </dl>
+  <p class="sr" id="live" aria-live="polite" aria-atomic="true"></p>
+  <noscript><p class="small">The calculator needs JavaScript. The figures above are for the example figures; the formulas below work without it.</p></noscript>
+  <p class="small">Yearly amount to cover = income + super + running costs. Income tax isn't worked out: this isn't tax advice, so check <a href="https://www.ato.gov.au/">ato.gov.au</a> or a registered tax agent.</p>
+  <p class="small">General information, not tax or financial advice. Figures are rounded to the cent, so rows may differ by 1c.</p>
+</div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="w"><div class="prose">
+<h2>How the calculator works</h2>
+<ul class="formula">
+<li>Super set-aside = income × super %</li>
+<li>Yearly amount to cover = income + super + running costs</li>
+<li>Billable hours per year = weeks worked × billable hours per week</li>
+<li>Break-even rate = yearly amount to cover ÷ billable hours per year</li>
+<li>Rate to charge = break-even rate × (1 + buffer %)</li>
+<li>Day rate = hourly rate × 8 hours</li>
+<li>If you're registered for GST: rate to quote = rate × 1.1</li>
+</ul>
+<p>The break-even rate is the least you can charge per billable hour and still cover the figures you entered, if you bill every one of those hours. The buffer sits on top of that.</p>
+
+<h2>Why your billable hours are fewer than the hours you work</h2>
+<p>Only the hours you can put on an invoice pay for the year. A lot of a tradie's working week can't be charged to anyone, for example:</p>
+<ul>
+<li>quoting, site visits and measure-ups for jobs you don't win</li>
+<li>driving between jobs and picking up materials</li>
+<li>invoicing, chasing payments, bookkeeping and BAS</li>
+<li>callbacks and fixing problems at no charge</li>
+<li>answering calls, messages and emails</li>
+</ul>
+<p>Weeks work the same way. You won't be on the tools all 52 weeks once you take holidays, public holidays, sick days and quiet patches between jobs into account.</p>
+<div class="exbox">
+<p><span class="ex-tag">Example</span>Example figures only, not averages.</p>
+<ul>
+<li>Weeks: 52 weeks, minus 4 weeks' holiday and 2 weeks for public holidays and sick days, is 46 weeks.</li>
+<li>Hours: 40 hours a week working, minus 10 hours of quoting, travel and admin, is 30 billable hours.</li>
+</ul>
+</div>
+
+<h2>A worked example</h2>
+<div class="exbox">
+<p><span class="ex-tag">Example</span>These are the example figures filled into the calculator, not real or typical figures.</p>
+<ol>
+<li>Income wanted: $80,000 a year before tax. Super at 12%: $9,600. Running costs: $20,000.</li>
+<li>Yearly amount to cover: $80,000 + $9,600 + $20,000 = $109,600.</li>
+<li>Billable hours: 46 weeks × 30 hours = 1,380 hours.</li>
+<li>Break-even rate: $109,600 ÷ 1,380 = $79.42 an hour.</li>
+<li>With a 15% buffer: $79.42 × 1.15 = $91.33 an hour, or $730.67 for an 8-hour day.</li>
+<li>Registered for GST? Add 10%: $100.47 an hour to quote.</li>
+</ol>
+</div>
+<p>Now say you'd worked the rate out as if every hour were billable, at 48 weeks × 40 hours = 1,920 hours. You'd get $109,600 ÷ 1,920 = $57.08 an hour. If you then bill the 1,380 hours from the example, that rate brings in about $78,775, which is $30,825 short of the $109,600 you needed.</p>
+
+<h2>What this rate doesn't include</h2>
+<ul>
+<li><strong>Income tax.</strong> Your income figure is before tax, so tax comes out of it. The calculator doesn't work out tax. This isn't tax advice; check <a href="https://www.ato.gov.au/">ato.gov.au</a> or a registered tax agent.</li>
+<li><strong>Materials for each job.</strong> These usually go on the quote separately, with your markup. Try the <a href="/tools/tradie-markup-margin-calculator/">markup vs margin calculator</a>.</li>
+<li><strong>GST.</strong> The rate is ex GST unless you switch on GST. GST you collect isn't income you keep.</li>
+</ul>
+
+<h2>Super if you're a sole trader</h2>
+<p>The ATO says self-employed sole traders and partners <a href="https://www.ato.gov.au/businesses-and-organisations/super-for-employers/work-out-if-you-have-to-pay-super/super-for-sole-traders-and-partnerships">don't have to pay super guarantee for themselves</a>, but can choose to make personal super contributions.</p>
+<p>The calculator starts at 12% because that's the <a href="https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/super-guarantee">super guarantee rate</a> employers pay for employees from 1 July 2025. It's there so you can budget for super if you want to. Enter 0 to leave it out.</p>
+
+<h2>When to add GST</h2>
+<p>Only add GST if you're registered for it. If you are, work out your rate ex GST first, then add 10%. The GST you collect goes to the ATO, so it isn't part of your income.</p>
+<p>As a general rule, the ATO says you must register for GST within 21 days once your GST turnover (gross business income, not counting GST) reaches $75,000 or more, or when you expect it to, for example in your first year of a new business. Below that, registering is optional, unless you want to claim fuel tax credits, which needs GST registration. Check the details for your situation on the ATO's <a href="https://www.ato.gov.au/businesses-and-organisations/gst-excise-and-indirect-taxes/gst/registering-for-gst">Registering for GST</a> page.</p>
+
+<h2>Common questions</h2>
+</div>
+<div class="faq" style="max-width:68ch">
+<details><summary>Does this calculator work out my income tax?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>No. The income figure is what you want to earn before tax, so your income tax comes out of it. The calculator doesn't work out tax, Medicare levy or anything you set aside for it.</p><p>This isn't tax advice. For tax, check <a href="https://www.ato.gov.au/">ato.gov.au</a> or talk to a registered tax agent.</p></div></details>
+<details><summary>Do I have to pay myself super as a sole trader?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>The ATO says self-employed sole traders and partners <a href="https://www.ato.gov.au/businesses-and-organisations/super-for-employers/work-out-if-you-have-to-pay-super/super-for-sole-traders-and-partnerships">don't have to pay super guarantee</a> for themselves, but can choose to make personal super contributions.</p><p>The 12% filled in is the <a href="https://www.ato.gov.au/tax-rates-and-codes/key-superannuation-rates-and-thresholds/super-guarantee">super guarantee rate</a> employers pay for employees from 1 July 2025. It's there so you can budget for super if you want to. Set it to 0 to leave super out.</p></div></details>
+<details><summary>Should I add GST to my hourly rate?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Only if you're registered for GST. If you are, add 10% GST on top of your rate when you quote and invoice. Switch on “I'm registered for GST” and the calculator shows the rate with GST added.</p><p>If you're not registered, don't add GST to your quotes or invoices.</p></div></details>
+<details><summary>What counts as business running costs?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Costs of running the business across the year that aren't tied to one job: for example vehicle costs, insurance, tools and equipment, phone, software and subscriptions, licences and accounting fees.</p><p>Materials for a particular job are usually charged on that job's quote instead. Our <a href="/tools/tradie-markup-margin-calculator/">markup vs margin calculator</a> can help price those.</p></div></details>
+<details><summary>What is the buffer for?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>The break-even rate only covers the figures you entered. A buffer gives you room for things that are hard to plan: quiet weeks, jobs that run over, invoices paid late or not at all, and costs that go up during the year.</p><p>15% is just a starting figure, not a recommended profit margin. Change it to suit your business.</p></div></details>
+</div>
+<p class="notice disc" style="max-width:68ch"><strong>General information, not tax or financial advice.</strong> The rate is only as good as the figures you enter. Check it against your own costs and hours.</p>
+
+<aside class="endcard" aria-labelledby="ec-h"><p class="eh" id="ec-h">Got your rate? Put it on quotes and invoices that add up.</p><article class="pc" id="kit-card">
+  <div class="media bun"><img src="/assets/sheets/tradie-admin-bundle.webp" width="800" height="600" loading="lazy" decoding="async" alt="What&#39;s included in the Tradie Admin Bundle: Quote, Invoice &amp; Variation Kit, Job Tracker &amp; Mini CRM, Tax Set-Aside Tracker, BAS &amp; GST Bookkeeping and AU Business Planner 2027, shown with made-up example data."><span class="exchip">Example data</span></div>
+  <div class="body">
+    <ul class="fmt" aria-label="File formats"><li>Google Sheets</li><li>XLSX</li><li>DOCX</li><li>PDF</li></ul>
+    <h3>Tradie Admin Bundle</h3>
+    <p class="promise">Five Australian templates that take a job from quote to paid invoice, then to your tax set-aside, BAS figures and year plan.</p>
+    <p class="pr"><b>A$43</b><span>on Etsy · A$47.30 if Etsy adds GST</span></p>
+    <ul class="ticks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>5 templates: Quote, Invoice &amp; Variation Kit, Job Tracker &amp; Mini CRM, Tax Set-Aside Tracker 2026-27, BAS &amp; GST Bookkeeping 2026-27 and AU Business Planner 2027</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Access PDF with Google Sheets copy links and a 5-step set-up order</span></li></ul><p class="fnote">Not tax, legal or financial advice, and it doesn&#39;t lodge anything. The BAS views are for quarterly, cash-basis GST reporters.</p>
+    <div class="act">
+      <a class="btn btn-go" href="https://www.etsy.com/listing/4613827503?utm_source=automait&amp;utm_medium=tools&amp;utm_campaign=tradie-admin-bundle" rel="noopener" aria-label="Buy on Etsy: Tradie Admin Bundle, 5 templates, A$43, or A$47.30 if Etsy adds GST (opens Etsy)"><svg class="i" aria-hidden="true"><use href="#i-send"/></svg>Buy on Etsy</a>
+      <a class="more" href="/shop/">See everything in the shop <span class="ar" aria-hidden="true">→</span></a>
+      <p class="micro">Checkout and download on Etsy, under Etsy's terms. The refund policy on the Etsy listing applies; your Australian Consumer Law rights apply either way.</p>
+    </div>
+    <p class="alt">Only need quotes and invoices? See the <a href="/templates/">quote, invoice and variation templates</a>.</p>
+  </div>
+</article></aside>
+</div></section>
+</main>
+<script>
+/*CALC-START*/
+function parseNum(s){
+  s=String(s==null?'':s).replace(/[\s,$%]/g,'');
+  if(s==='')return 0;
+  if(!/^-?(\d+\.?\d*|\.\d+)$/.test(s))return NaN;
+  return Number(s);
+}
+var DAY_HOURS=8,GST_RATE=0.1;
+function calcRate(o){
+  var errors={};
+  ['income','costs'].forEach(function(k){
+    var v=o[k];
+    if(!isFinite(v))errors[k]='Enter a number, like 250 or 12.5.';
+    else if(v<0)errors[k]='Use 0 or more.';
+  });
+  if(!isFinite(o.superPct))errors.superPct='Enter a number, like 12.';
+  else if(o.superPct<0)errors.superPct='Use 0 or more. Enter 0 to leave super out.';
+  else if(o.superPct>100)errors.superPct='Use 100 or less.';
+  if(!isFinite(o.weeks))errors.weeks='Enter a number, like 46.';
+  else if(o.weeks<=0)errors.weeks='Enter more than 0 weeks.';
+  else if(o.weeks>52)errors.weeks='There are 52 weeks in a year. Use 52 or less.';
+  if(!isFinite(o.hours))errors.hours='Enter a number, like 30.';
+  else if(o.hours<=0)errors.hours='Enter more than 0 hours.';
+  else if(o.hours>168)errors.hours='There are 168 hours in a week. Use 168 or less.';
+  if(!isFinite(o.buffer))errors.buffer='Enter a number, like 15.';
+  else if(o.buffer<0)errors.buffer='Use 0 or more. Below 0 the rate would be under break-even.';
+  if(Object.keys(errors).length)return {ok:false,errors:errors,msg:'Check the highlighted field.'};
+  var superAmt=o.income*o.superPct/100;
+  var need=o.income+superAmt+o.costs;
+  if(!(need>0))return {ok:false,errors:errors,msg:'Add your target income or running costs to see a rate.'};
+  var hoursYear=o.weeks*o.hours;
+  var breakEven=need/hoursYear;
+  var rate=breakEven*(1+o.buffer/100);
+  var g=o.gst?GST_RATE:0;
+  return {ok:true,errors:errors,superAmt:superAmt,need:need,hoursYear:hoursYear,
+    breakEven:breakEven,rate:rate,rateGst:rate*g,rateCharged:rate*(1+g),
+    day:rate*DAY_HOURS,dayCharged:rate*(1+g)*DAY_HOURS,breakEvenDay:breakEven*DAY_HOURS,
+    yearEx:rate*hoursYear};
+}
+/*CALC-END*/
+(function(){
+  var f=document.getElementById('calc');if(!f)return;
+  var $=function(id){return document.getElementById(id);};
+  var money=new Intl.NumberFormat('en-AU',{style:'currency',currency:'AUD',minimumFractionDigits:2,maximumFractionDigits:2});
+  var money0=new Intl.NumberFormat('en-AU',{style:'currency',currency:'AUD',maximumFractionDigits:0});
+  var num=new Intl.NumberFormat('en-AU',{maximumFractionDigits:1});
+  var pf=new Intl.NumberFormat('en-AU',{maximumFractionDigits:2});
+  var DEF={income:'80000',costs:'20000',superPct:'12',weeks:'46',hours:'30',buffer:'15'};
+  var fields=['income','costs','superPct','weeks','hours','buffer'];
+  var t;
+  function update(){
+    var o={gst:$('gst').checked};
+    fields.forEach(function(k){o[k]=parseNum($(k).value);});
+    var r=calcRate(o);
+    fields.forEach(function(k){
+      var e=r.errors[k]||'';$(k+'-e').textContent=e;
+      if(e)$(k).setAttribute('aria-invalid','true');else $(k).removeAttribute('aria-invalid');
+    });
+    var bl=isFinite(o.buffer)&&o.buffer>=0?pf.format(o.buffer)+'%':'';
+    $('q-lab').textContent=o.gst?'Hourly rate to charge (inc GST)':'Hourly rate to charge (no GST)';
+    $('r-rate-l').textContent=bl?'Rate with '+bl+' buffer, ex GST':'Rate with buffer, ex GST';
+    $('r-day-l').textContent=o.gst?'Day rate, 8 hours (inc GST)':'Day rate, 8 hours (no GST)';
+    $('r-gst-row').hidden=!o.gst;
+    var ids=['q-val','r-be','r-rate','r-gst','r-day','r-beday','r-hours','r-need','r-year'];
+    if(!r.ok){
+      $('rmsg').textContent=r.msg;
+      ids.forEach(function(i){$(i).textContent='\u2013';});
+      clearTimeout(t);t=setTimeout(function(){$('live').textContent='';},600);
+      return;
+    }
+    $('rmsg').textContent='';
+    $('q-val').textContent=money.format(r.rateCharged);
+    $('r-be').textContent=money.format(r.breakEven);
+    $('r-rate').textContent=money.format(r.rate);
+    $('r-gst').textContent=money.format(r.rateGst);
+    $('r-day').textContent=money.format(r.dayCharged);
+    $('r-beday').textContent=money.format(r.breakEvenDay);
+    $('r-hours').textContent=num.format(r.hoursYear);
+    $('r-need').textContent=money0.format(r.need);
+    $('r-year').textContent=money0.format(r.yearEx);
+    clearTimeout(t);
+    t=setTimeout(function(){
+      $('live').textContent='Hourly rate to charge '+money.format(r.rateCharged)+(o.gst?' including GST':'')+'. Break-even rate '+money.format(r.breakEven)+'. Day rate '+money.format(r.dayCharged)+'. '+num.format(r.hoursYear)+' billable hours a year.';
+    },700);
+  }
+  f.addEventListener('input',update);
+  f.addEventListener('change',update);
+  f.addEventListener('submit',function(e){e.preventDefault();update();});
+  $('reset').addEventListener('click',function(){
+    fields.forEach(function(k){$(k).value=DEF[k];});
+    $('gst').checked=false;update();
+  });
+  update();
+})();
+</script>
+<footer class="dark">
+  <div class="w fgrid">
+    <div>
+      <a class="brand fbrand" href="/" aria-label="AUTOMAIT home"><svg class="mark" aria-hidden="true"><use href="#mk"/></svg><span class="word">AUTOM<b>AI</b>T</span></a>
+      <p>AUTOMAIT · ABN 82 801 716 831 · Australia</p>
+      <p>AUTOMAIT is not registered for GST and doesn't charge GST. Marketplaces such as Etsy may add GST at checkout.</p>
+      <p>A founder and an AI operator, working together. Questions: <a href="mailto:hello@automait.au" style="color:var(--on-ink)">hello@automait.au</a></p>
+    </div>
+    <nav aria-label="Products"><b>Shop</b><a href="/shop/">Everything we sell</a><a href="/#kit">AI Front Desk Kit</a><a href="/templates/">Templates</a><a href="/skills/">AI Operator Pack</a><a href="/#services">Setup services</a></nav>
+    <nav aria-label="More"><b>More</b><a href="/blog/">Blog</a><a href="/tools/">Free calculators</a><a href="/terms/">Terms of sale</a><a href="/privacy/">Privacy policy</a><a href="/skills/licence/">Pack licence</a><a href="mailto:hello@automait.au">Email us</a></nav>
+  </div>
+</footer>
+</body>
+</html>
