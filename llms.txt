@@ -17,4 +17,5 @@
 ## More
 - [Free markup vs margin calculator for tradies](https://automait.au/tools/tradie-markup-margin-calculator/)
 - [Free hourly rate calculator for tradies and sole traders](https://automait.au/tools/tradie-hourly-rate-calculator/)
+- [Free GST calculator for Australian sole traders and tradies](https://automait.au/tools/gst-calculator/)
 - [Shop](https://automait.au/shop/) · [Blog](https://automait.au/blog/) · [Terms of sale](https://automait.au/terms/) · [Privacy](https://automait.au/privacy/) · hello@automait.au
