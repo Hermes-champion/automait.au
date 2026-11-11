@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sole trader tax calculator Australia 2026-27 | AUTOMAIT</title>
+<meta name="description" content="Free sole trader tax calculator for Australia, 2026-27. Estimate income tax and the 2% Medicare levy on your profit, and how much to set aside each week.">
+<meta name="theme-color" content="#0B1B2E">
+<link rel="canonical" href="https://automait.au/tools/sole-trader-tax-calculator/">
+<meta property="og:type" content="website"><meta property="og:site_name" content="AUTOMAIT"><meta property="og:locale" content="en_AU">
+<meta property="og:title" content="Sole trader tax calculator Australia 2026-27 | AUTOMAIT"><meta property="og:description" content="Free sole trader tax calculator for Australia, 2026-27. Estimate income tax and the 2% Medicare levy on your profit, and how much to set aside each week."><meta property="og:url" content="https://automait.au/tools/sole-trader-tax-calculator/">
+<meta property="og:image" content="https://automait.au/img/og-shop.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Sole trader tax calculator Australia 2026-27 | AUTOMAIT"><meta name="twitter:description" content="Free sole trader tax calculator for Australia, 2026-27. Estimate income tax and the 2% Medicare levy on your profit, and how much to set aside each week."><meta name="twitter:image" content="https://automait.au/img/og-shop.png">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/site.css">
+<style>
+/* calculator page (page-scoped; uses site.css tokens) */
+.calc{display:grid;gap:24px;align-items:start}
+@media (min-width:900px){.calc{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:40px}.res{position:sticky;top:92px}}
+.cform{background:var(--surface);border:1px solid var(--line);border-radius:var(--r-card);padding:22px 20px 24px}
+@media (min-width:600px){.cform{padding:30px 30px 32px}}
+.cform h2,.res h2{font-size:clamp(1.35rem,3vw,1.6rem);line-height:1.15}
+.exnote{margin-top:8px;color:var(--muted);font-size:.95rem}
+.fgrid2{display:grid;gap:18px;margin-top:22px}
+@media (min-width:600px){.fgrid2{grid-template-columns:1fr 1fr}.fgrid2 .full{grid-column:1/-1}}
+.fld{min-width:0}
+.fld>label,.seg legend{display:block;font-weight:700;line-height:1.3;margin-bottom:4px}
+.hint{display:block;font-size:.92rem;line-height:1.45;color:var(--muted);margin-bottom:8px}
+.inp{display:flex;align-items:center;min-height:52px;border:1.5px solid #6B7A8D;border-radius:12px;background:#fff;transition:border-color .18s var(--ease)}
+.inp:focus-within{outline:3px solid var(--ink);outline-offset:2px}
+.inp .ad{flex:none;padding:0 4px 0 14px;font-weight:700;color:var(--muted)}
+.inp .ad.suf{padding:0 14px 0 4px}
+.inp input{flex:1;min-width:0;width:100%;border:0;background:transparent;font:600 1.125rem/1.2 var(--body);color:var(--text);padding:13px 14px 13px 4px;outline:none}
+.inp input:focus-visible{outline:none}
+.inp:has(input[aria-invalid=true]){border-color:#B42318;border-width:2px}
+.err{color:#B42318;font-size:.92rem;font-weight:600;margin-top:6px}
+.err:empty{display:none}
+.seg{border:0;padding:0;margin:0;min-width:0}
+.segs{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid #6B7A8D;border-radius:12px;overflow:hidden;background:#fff}
+.segs label{position:relative;cursor:pointer}
+.segs span{display:flex;align-items:center;justify-content:center;min-height:48px;padding:8px 10px;font-weight:700;text-align:center;transition:background-color .18s var(--ease),color .18s var(--ease)}
+.segs label+label span{border-left:1.5px solid #6B7A8D}
+.segs input:checked+span{background:var(--ink);color:var(--on-ink)}
+.segs input:focus-visible+span{outline:3px solid var(--hivis);outline-offset:-6px;border-radius:8px;box-shadow:inset 0 0 0 7px var(--ink)}
+.segs input:not(:checked)+span:hover{background:var(--paper)}
+.swrow{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:52px;padding:10px 0;border-top:1px solid var(--line);margin-top:4px;cursor:pointer}
+.swrow b{display:block}
+.swrow .hint{margin:2px 0 0}
+.sw{appearance:none;-webkit-appearance:none;flex:none;position:relative;width:56px;height:32px;margin:0;border-radius:999px;background:#6B7A8D;cursor:pointer;transition:background-color .18s var(--ease)}
+.sw::after{content:"";position:absolute;top:4px;left:4px;width:24px;height:24px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(11,27,46,.35);transition:transform .18s var(--ease)}
+.sw:checked{background:var(--go)}
+.sw:checked::after{transform:translateX(24px)}
+.sw:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.rowbtn{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn-sm{min-height:44px;padding:10px 16px;font-size:.97rem;cursor:pointer;background:transparent}
+.res{border-radius:var(--r-card);padding:22px 20px 24px;overflow:hidden}
+@media (min-width:600px){.res{padding:30px}}
+.qbig{margin-top:16px;padding:16px 18px;border-radius:14px;background:var(--ink-2)}
+.qbig .lab{display:block;color:var(--on-ink-muted);font-weight:600;font-size:.95rem}
+.qbig .val{display:block;margin-top:4px;font:800 clamp(2rem,7vw,2.6rem)/1.05 var(--display);letter-spacing:-.02em;color:var(--hivis);overflow-wrap:anywhere}
+.rlist{margin:16px 0 0;display:grid}
+.rlist>div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-bottom:1px solid rgba(234,240,247,.14)}
+.rlist>div[hidden]{display:none}
+.rlist dt{color:var(--on-ink-muted)}
+.rlist dd{margin:0;font-weight:700;font-variant-numeric:tabular-nums;text-align:right;overflow-wrap:anywhere}
+.conv{margin-top:14px;padding:12px 14px;border-left:4px solid var(--hivis);background:rgba(234,240,247,.06);border-radius:0 10px 10px 0}
+.rmsg{margin-top:14px;padding:12px 14px;border-radius:10px;background:#3A1F24;color:#FFE3DE;font-weight:600}
+.rmsg:empty{display:none}
+.res .small{margin-top:14px;font-size:.92rem;color:var(--on-ink-muted)}
+.res .small a{color:var(--on-ink);font-weight:600}
+.reftab{width:100%;max-width:420px;border-collapse:collapse;display:table!important;background:var(--surface)}
+.reftab caption{text-align:left;font-weight:700;margin-bottom:8px}
+.reftab th{background:var(--ink);color:var(--on-ink)}
+.reftab td,.reftab th{font-variant-numeric:tabular-nums}
+.formula{list-style:none;padding:0!important}
+.formula li{padding:10px 14px;background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.disc{margin-top:28px}
+.endcard .pc .media.kitm{aspect-ratio:696/847;background:#fff}
+.endcard .pc .media.kitm img{object-fit:contain;object-position:center top;padding:12px}
+@media (min-width:700px){.endcard .pc .media.kitm{align-self:start}}
+.legal{margin-top:10px}
+.faq{margin-top:18px}
+/* GST page additions */
+.rlist dt{min-width:0}
+.rlist dd{white-space:nowrap;overflow-wrap:normal}
+.calc+.calc{margin-top:0}
+.qlines{display:grid;gap:14px;margin-top:22px}
+.qline{border:0;margin:0;padding:0 0 14px;min-width:0;border-bottom:1px solid var(--line)}
+.qline legend{font-weight:700;padding:0;margin-bottom:8px}
+.qrow{display:grid;gap:12px}
+@media (min-width:600px){.qrow{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr)}}
+.qline .fld>label{font-weight:600;font-size:.95rem}
+.qline .inp input{font-weight:500}
+.rnote{margin-top:14px;padding:12px 14px;border-left:4px solid var(--hivis);background:rgba(234,240,247,.06);border-radius:0 10px 10px 0}
+.res .rowbtn{align-items:center}
+.rowbtn [hidden]{display:none}
+.copys{font-size:.92rem;font-weight:600;color:var(--on-ink)}
+.ex-tag{display:inline-block;font-size:.78rem;font-weight:700;padding:3px 8px;border-radius:var(--r-chip);background:var(--hivis);color:var(--ink);vertical-align:2px;margin-right:6px}
+.exbox{padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:14px}
+.endcard .alt{margin-top:14px;font-size:.97rem}
+.endcard .alt a{color:var(--ink);font-weight:600}
+@media (prefers-reduced-motion:reduce){.inp,.segs span,.sw,.sw::after{transition:none}}
+/* tax page additions */
+.res h3{margin-top:22px;font-size:1.05rem;color:var(--on-ink)}
+.qbig .sub{display:block;margin-top:6px;color:var(--on-ink);font-weight:600}
+.rlist .tot dt,.rlist .tot dd{color:var(--on-ink);font-weight:800}
+.reftab{max-width:560px}
+.reftab td:first-child{white-space:nowrap}
+/* the tracker image is wide (1058x521): show it full width above the card body instead of in the narrow side column */
+.endcard #tracker-card{grid-template-columns:1fr}
+.endcard #tracker-card .media{border-right:0;border-bottom:1px solid var(--line)}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Sole trader tax set-aside calculator (Australia, 2026-27)", "url": "https://automait.au/tools/sole-trader-tax-calculator/", "description": "Free sole trader tax calculator for Australia, 2026-27. Estimate income tax and the 2% Medicare levy on your profit, and how much to set aside each week.", "applicationCategory": "FinanceApplication", "operatingSystem": "Any (runs in a web browser)", "browserRequirements": "Requires JavaScript", "inLanguage": "en-AU", "isAccessibleForFree": true, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "AUD"}, "publisher": {"@type": "Organization", "name": "AUTOMAIT", "url": "https://automait.au/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much tax should I set aside as a sole trader?", "acceptedAnswer": {"@type": "Answer", "text": "It depends on your profit, because tax is worked out on your whole taxable income at the individual rates. Using this calculator's 2026–27 estimate, a sole trader with $60,000 profit and no other income would set aside about $9,620 for income tax and the Medicare levy, which is about 16.1% of profit or $185.00 a week. If you also earn wages, the tax on your business profit is usually at a higher rate, because your wages use up the lower brackets first. Enter your own figures above for an estimate."}}, {"@type": "Question", "name": "Do sole traders pay a different tax rate?", "acceptedAnswer": {"@type": "Answer", "text": "No. The ATO says a sole trader pays tax on all their income, including business income, based on their individual tax rate. You report business income and expenses in your individual tax return; there's no separate business tax return for sole traders."}}, {"@type": "Question", "name": "What are the 2026–27 tax rates for Australian residents?", "acceptedAnswer": {"@type": "Answer", "text": "Per the ATO's resident tax rates for 2026–27: nil up to $18,200; 15c for each $1 over $18,200; $4,020 plus 30c for each $1 over $45,000; $31,020 plus 37c for each $1 over $135,000; and $51,370 plus 45c for each $1 over $190,000. These don't include the 2% Medicare levy. The second rate is 15% for 2026–27, down from 16% in 2025–26."}}, {"@type": "Question", "name": "Do I have to pay PAYG instalments?", "acceptedAnswer": {"@type": "Answer", "text": "Not always. The ATO says an individual, including a sole trader, is automatically entered into PAYG instalments if they have instalment income of $4,000 or more in their latest tax return, tax payable of $1,000 or more on their latest notice of assessment, and estimated (notional) tax of $500 or more. You can also choose to enter. Instalments you pay during the year are offset against your tax when you lodge your return."}}, {"@type": "Question", "name": "Should I include GST in my profit?", "acceptedAnswer": {"@type": "Answer", "text": "No. Enter your profit without GST. If you're registered for GST, the GST you collect is paid to the ATO with your BAS, so keep it aside separately. The ATO suggests a separate bank account for your tax could help. The GST calculator works out the GST in a price."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://automait.au/"}, {"@type": "ListItem", "position": 2, "name": "Free tools", "item": "https://automait.au/tools/"}, {"@type": "ListItem", "position": 3, "name": "Sole trader tax calculator", "item": "https://automait.au/tools/sole-trader-tax-calculator/"}]}</script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mk" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="#132A47"/><path d="M18 78 L51 22 L69 22 L50.14 54 L65 54 L65 65 L43.66 65 L36 78 Z" fill="#EAF0F7"/><path d="M64 22 H80 V78 H64 Z" fill="#FFD23F"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M9 15l2 2 4-4"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24"><path d="m12 3 2.8 5.7 6.2.9-4.5 4.4 1 6.2L12 17.3 6.5 20.2l1-6.2L3 9.6l6.2-.9z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v12M6 10l6 6 6-6M5 20h14"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-phoneoff" viewBox="0 0 24 24"><path d="M10.7 13.3a16 16 0 0 0 3.4 2.6l1.3-1.3a2 2 0 0 1 2.1-.4c.8.3 1.7.5 2.6.6A2 2 0 0 1 22 16.9v3a2 2 0 0 1-2.2 2A19.8 19.8 0 0 1 3.1 4.2 2 2 0 0 1 5.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.4 2.1L8.9 9.8M22 2 2 22"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/></symbol>
+  <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 8-5 4 5 4M16 8l5 4-5 4"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to main content</a>
+<header class="top dark">
+  <div class="w">
+    <a class="brand" href="/" aria-label="AUTOMAIT home"><svg class="mark" aria-hidden="true"><use href="#mk"/></svg><span class="word">AUTOM<b>AI</b>T</span></a>
+    <nav class="nav" aria-label="Main">
+      <a class="l keep" href="/shop/">Shop</a><a class="l" href="/#services">Services</a><a class="l" href="/templates/">Templates</a><a class="l" href="/blog/">Blog</a><a class="l" href="/#faq">FAQ</a>
+      <a class="btn btn-go" href="mailto:hello@automait.au?subject=Fixed-price%20quote%20request&amp;body=Business%20name%3A%0AWhat%20you%20do%3A%0AHow%20enquiries%20reach%20you%20now%20(phone%2C%20web%20form%2C%20email%2C%20Facebook)%3A%0AWhat%20you%27d%20like%20help%20with%3A%0A">Get a quote</a>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<section class="phero dark sm" aria-labelledby="h1" style="padding:0"><div class="w"><a class="back" href="/tools/">← Free tools</a><h1 id="h1">Sole trader tax calculator 2026–27: how much to set aside</h1><p class="lede">Estimate the income tax and Medicare levy on your 2026–27 business profit, using the ATO's resident tax rates, and see how much to put aside each week, fortnight or month. Free. It runs in your browser and nothing you type is saved or sent.</p></div><div class="tape" aria-hidden="true"></div></section>
+
+<section aria-label="Tax set-aside calculator"><div class="w">
+<div class="calc">
+<form class="cform" id="calc" novalidate aria-labelledby="calc-h">
+  <h2 id="calc-h">Your 2026–27 figures</h2>
+  <p class="exnote"><svg class="i" aria-hidden="true" style="width:18px;height:18px;vertical-align:-3px;fill:none;stroke:currentColor;stroke-width:2"><use href="#i-info"/></svg> The $60,000 profit filled in is an example. Replace it with your own estimate.</p>
+  <div class="fgrid2">
+    <div class="fld full">
+      <label for="profit">Expected business profit for 2026–27 (A$)</label>
+      <span class="hint" id="profit-h">Your business income minus your deductible business expenses, for 1 July 2026 to 30 June 2027. Leave out GST. Enter 0 if you expect a loss.</span>
+      <div class="inp"><span class="ad" aria-hidden="true">$</span><input id="profit" name="profit" type="text" inputmode="decimal" autocomplete="off" value="60000" aria-describedby="profit-h profit-e"></div>
+      <p class="err" id="profit-e"></p>
+    </div>
+    <div class="fld full">
+      <label for="wages">Wages or salary from a job <span style="font-weight:400">(optional)</span></label>
+      <span class="hint" id="wages-h">Before tax, for the same year. Leave blank if the business is your only income.</span>
+      <div class="inp"><span class="ad" aria-hidden="true">$</span><input id="wages" name="wages" type="text" inputmode="decimal" autocomplete="off" value="" aria-describedby="wages-h wages-e"></div>
+      <p class="err" id="wages-e"></p>
+    </div>
+    <div class="fld full">
+      <label for="withheld">Tax withheld from those wages <span style="font-weight:400">(optional)</span></label>
+      <span class="hint" id="withheld-h">Your expected total for the whole year (your payslips show the amount so far). Leave blank to assume your employer withholds enough to cover the tax on your wages.</span>
+      <div class="inp"><span class="ad" aria-hidden="true">$</span><input id="withheld" name="withheld" type="text" inputmode="decimal" autocomplete="off" value="" aria-describedby="withheld-h withheld-e"></div>
+      <p class="err" id="withheld-e"></p>
+    </div>
+  </div>
+</form>
+
+<div class="res dark" id="results" aria-labelledby="res-h">
+  <h2 id="res-h">Your estimate</h2>
+  <p class="rmsg" id="rmsg" role="alert"></p>
+  <p class="qbig"><span class="lab">Set aside for 2026–27</span><span class="val" id="q-val">$9,620.00</span><span class="sub" id="q-sub">About 16.1% of your profit, or $185.00 a week</span></p>
+  <h3>Put aside about</h3>
+  <dl class="rlist">
+    <div><dt>Each week</dt><dd id="r-week">$185.00</dd></div>
+    <div><dt>Each fortnight</dt><dd id="r-fn">$370.00</dd></div>
+    <div><dt>Each month</dt><dd id="r-month">$801.67</dd></div>
+    <div><dt>Share of each dollar of profit</dt><dd id="r-pct">16.1%</dd></div>
+  </dl>
+  <h3>How it's worked out</h3>
+  <dl class="rlist">
+    <div><dt>Taxable income</dt><dd id="r-taxable">$60,000.00</dd></div>
+    <div><dt>Income tax</dt><dd id="r-tax">$8,520.00</dd></div>
+    <div><dt>Low income tax offset</dt><dd id="r-lito">−$100.00</dd></div>
+    <div><dt>Medicare levy (2%)</dt><dd id="r-ml">$1,200.00</dd></div>
+    <div class="tot"><dt>Total estimated tax</dt><dd id="r-total">$9,620.00</dd></div>
+    <div><dt>Effective rate</dt><dd id="r-eff">16.0%</dd></div>
+    <div id="cov-row" hidden><dt id="cov-l">Less tax on your wages alone (assumed withheld)</dt><dd id="r-cov">$0.00</dd></div>
+    <div class="tot"><dt>Left to set aside</dt><dd id="r-set">$9,620.00</dd></div>
+  </dl>
+  <p class="rnote" id="wnote" hidden></p>
+  <p class="rnote" id="mnote" hidden>On a low income you may pay less Medicare levy, or none. This estimate uses the full 2%, so it may be a little high. See the ATO's <a href="https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners">low-income Medicare levy reduction</a>.</p>
+  <div class="rowbtn"><button class="btn btn-line btn-sm" type="button" id="copy1">Copy results</button><span class="copys" id="copy1-s" role="status"></span></div>
+  <p class="sr" id="live" aria-live="polite" aria-atomic="true"></p>
+  <noscript><p class="small">The calculator needs JavaScript. The figures above are for the $60,000 example; the rates and formulas below work without it.</p></noscript>
+  <p class="small">An estimate for Australian residents for the full year, using 2026–27 rates. It doesn't include HELP or other study loan repayments, the Medicare levy surcharge, other tax offsets or super. Per-period amounts are rounded up to the cent.</p>
+  <p class="small">General information, not tax advice. Check with a registered tax agent or the ATO.</p>
+</div>
+</div>
+</div></section>
+
+<section style="padding-top:0"><div class="w"><div class="prose">
+<h2>How the calculator works</h2>
+<ul class="formula">
+<li>Taxable income = business profit + wages</li>
+<li>Income tax = 2026–27 resident rates on taxable income, less the low income tax offset (never below $0)</li>
+<li>Medicare levy = 2% of taxable income</li>
+<li>Set aside = income tax + Medicare levy − tax covered by your wages</li>
+<li>Per week = set aside ÷ 52; per fortnight ÷ 26; per month ÷ 12</li>
+</ul>
+<div class="exbox">
+<p><span class="ex-tag">Example</span>Example amounts only.</p>
+<ul>
+<li>$60,000 profit, no other income. Income tax is $4,020 + 30% of $15,000 = $8,520.00. The low income tax offset is $325 − 1.5% of $15,000 = $100.00, so income tax is $8,420.00. Add the Medicare levy of $1,200.00 (2% of $60,000) for a total of $9,620.00. That's about 16.1% of profit: $185.00 a week or $801.67 a month.</li>
+<li>$50,000 wages plus $20,000 profit. Tax on $70,000 is $12,920.00 including Medicare levy. Tax on the $50,000 of wages alone is $6,270.00, which your employer's withholding is assumed to cover. The extra $6,650.00 is what to set aside: about 33.3% of the $20,000 profit, because it's taxed at 30% plus the 2% levy and it reduces the low income tax offset.</li>
+</ul>
+</div>
+
+<h2>2026–27 tax rates for Australian residents</h2>
+<p>These are the ATO's <a href="https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents">resident tax rates for 2026–27</a>. They apply if you're an Australian resident for tax purposes for the full year and entitled to the full tax-free threshold. They don't include the Medicare levy.</p>
+<table class="reftab"><caption>Resident tax rates 2026–27</caption><thead><tr><th scope="col">Taxable income</th><th scope="col">Tax on this income</th></tr></thead><tbody><tr><td>$0 – $18,200</td><td>Nil</td></tr><tr><td>$18,201 – $45,000</td><td>15c for each $1 over $18,200</td></tr><tr><td>$45,001 – $135,000</td><td>$4,020 plus 30c for each $1 over $45,000</td></tr><tr><td>$135,001 – $190,000</td><td>$31,020 plus 37c for each $1 over $135,000</td></tr><tr><td>$190,001 and over</td><td>$51,370 plus 45c for each $1 over $190,000</td></tr></tbody></table>
+<p>The 15% rate on income from $18,201 to $45,000 is new for 2026–27. In 2025–26 that rate was 16%.</p>
+
+<h2>Medicare levy</h2>
+<p>The ATO says <a href="https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/what-is-the-medicare-levy">the Medicare levy is 2% of your taxable income</a>, paid on top of income tax. People on low incomes may pay a reduced levy or none. For 2025–26, the ATO's <a href="https://www.ato.gov.au/individuals-and-families/medicare-and-private-health-insurance/medicare-levy/medicare-levy-reduction/medicare-levy-reduction-for-low-income-earners">thresholds for a single person</a> were $28,011 and $35,013. We couldn't find 2026–27 thresholds on that page when we checked, so this calculator always uses the full 2%. The Medicare levy surcharge is a separate charge and isn't included.</p>
+
+<h2>Low income tax offset</h2>
+<p>The ATO's <a href="https://www.ato.gov.au/individuals-and-families/income-deductions-offsets-and-records/tax-offsets/low-income-tax-offset">low income tax offset</a> page says residents with taxable income of $37,500 or less get $700 off their tax. Between $37,501 and $45,000 it's $700 minus 5c for every $1 over $37,500, and between $45,001 and $66,667 it's $325 minus 1.5c for every $1 over $45,000. It can reduce your tax to $0 but isn't paid out as a refund. The ATO works it out when you lodge. The calculator applies it automatically, to income tax only, not the Medicare levy.</p>
+
+<h2>Why set money aside?</h2>
+<p>When you earn wages, your employer withholds tax from each pay. Business income usually has no tax taken out, so the tax on your profit is due after you lodge your return. The ATO lists income as a sole trader, and not paying enough in PAYG instalments, among the <a href="https://www.ato.gov.au/individuals-and-families/your-tax-return/your-notice-of-assessment/why-you-may-receive-a-tax-bill">reasons you may get a tax bill</a>.</p>
+<p>Once you've lodged a return with business income, the ATO may put you into <a href="https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/starting-payg-instalments">PAYG instalments</a>, which are quarterly prepayments of your tax. For individuals it's automatic when your latest return shows instalment income of $4,000 or more, tax payable of $1,000 or more, and estimated tax of $500 or more. New businesses can choose to start them. The ATO's own example divides the yearly instalment amount by 52 to work out what to put aside each week, which is how the weekly figure above is worked out.</p>
+<p>A separate bank account for tax money can help keep it out of everyday spending. The ATO suggests this in its <a href="https://www.ato.gov.au/individuals-and-families/paying-the-ato/help-with-paying/managing-payments">managing payments</a> guide.</p>
+
+<h2>What this estimate leaves out</h2>
+<ul>
+<li>HELP, VSL and other study and training loan repayments.</li>
+<li>The Medicare levy surcharge (for some people without private hospital cover), and Medicare levy reductions and exemptions.</li>
+<li>Tax offsets other than the low income tax offset, such as the seniors and pensioners tax offset.</li>
+<li>Super: personal super contributions you claim as a deduction, and any super you choose to put aside for yourself.</li>
+<li>Capital gains, investment income, and anyone who isn't an Australian resident for the full year.</li>
+<li>GST. If you're registered, keep the GST you collect separate. It isn't part of your profit.</li>
+</ul>
+<p>Your actual tax is worked out when you lodge your return. If your situation is more complex, a registered tax agent can work it out properly.</p>
+
+<h2>Other free tools and guides</h2>
+<ul>
+<li><a href="/tools/gst-calculator/">GST calculator</a>: add or remove 10% GST, to the cent.</li>
+<li><a href="/blog/bas-due-dates-2026-27-australia/">BAS due dates 2026–27</a>: when your quarterly BAS and PAYG instalments are due.</li>
+<li><a href="/tools/tradie-hourly-rate-calculator/">Hourly rate calculator</a>: work out the rate you need to charge.</li>
+</ul>
+
+<h2>Common questions</h2>
+</div>
+<div class="faq" style="max-width:68ch">
+<details><summary>How much tax should I set aside as a sole trader?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>It depends on your profit, because tax is worked out on your whole taxable income at the individual rates. Using this calculator's 2026–27 estimate, a sole trader with $60,000 profit and no other income would set aside about $9,620 for income tax and the Medicare levy, which is about 16.1% of profit or $185.00 a week.</p><p>If you also earn wages, the tax on your business profit is usually at a higher rate, because your wages use up the lower brackets first. Enter your own figures above for an estimate.</p></div></details>
+<details><summary>Do sole traders pay a different tax rate?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>No. The ATO says a sole trader pays tax on all their income, including business income, <a href="https://www.ato.gov.au/businesses-and-organisations/starting-registering-or-closing-a-business/starting-your-own-business/business-structures-key-tax-obligations">based on their individual tax rate</a>. You report business income and expenses in your individual tax return; there's no separate business tax return for sole traders.</p></div></details>
+<details><summary>What are the 2026–27 tax rates for Australian residents?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Per the ATO's <a href="https://www.ato.gov.au/tax-rates-and-codes/tax-rates-australian-residents">resident tax rates</a> for 2026–27: nil up to $18,200; 15c for each $1 over $18,200; $4,020 plus 30c for each $1 over $45,000; $31,020 plus 37c for each $1 over $135,000; and $51,370 plus 45c for each $1 over $190,000. These don't include the 2% Medicare levy.</p><p>The second rate is 15% for 2026–27, down from 16% in 2025–26.</p></div></details>
+<details><summary>Do I have to pay PAYG instalments?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>Not always. The ATO says an individual, including a sole trader, is <a href="https://www.ato.gov.au/businesses-and-organisations/income-deductions-and-concessions/payg-instalments/starting-payg-instalments">automatically entered into PAYG instalments</a> if they have instalment income of $4,000 or more in their latest tax return, tax payable of $1,000 or more on their latest notice of assessment, and estimated (notional) tax of $500 or more. You can also choose to enter. Instalments you pay during the year are offset against your tax when you lodge your return.</p></div></details>
+<details><summary>Should I include GST in my profit?<span class="pm" aria-hidden="true"></span></summary><div class="ans"><p>No. Enter your profit without GST. If you're registered for GST, the GST you collect is paid to the ATO with your BAS, so keep it aside separately. The ATO suggests a <a href="https://www.ato.gov.au/individuals-and-families/paying-the-ato/help-with-paying/managing-payments">separate bank account for your tax</a> could help. The <a href="/tools/gst-calculator/">GST calculator</a> works out the GST in a price.</p></div></details>
+</div>
+<p class="notice disc" style="max-width:68ch"><strong>General information, not tax advice.</strong> This is an estimate only. Check with a registered tax agent or the ATO for your situation.</p>
+
+<aside class="endcard" aria-labelledby="ec-h"><p class="eh" id="ec-h">Want to track it through the year?</p><article class="pc" id="tracker-card">
+  <div class="media fit"><img src="/templates/img/tracker-monthly-summary.webp" width="1058" height="521" loading="lazy" decoding="async" alt="Monthly summary for an example business: income, GST, expenses, profit and amount to set aside per month."><span class="exchip">Example data</span></div>
+  <div class="body">
+    <ul class="fmt" aria-label="File formats"><li>XLSX</li><li>PDF</li></ul>
+    <h3>Sole Trader Tax Set-Aside Tracker 2026-27</h3>
+    <p class="promise">Log what comes in and goes out, and see what to put aside each month.</p>
+    <p class="pr"><b>A$12</b><span>AUD one-off</span></p>
+    <ul class="ticks"><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Set-aside % you choose (starts at 0%)</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>GST totals per BAS quarter (cash basis)</span></li><li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg><span>Excel / Google Sheets</span></li></ul><p class="fnote">Not tax advice. Doesn't calculate income tax.</p>
+    <div class="act">
+      <a class="btn btn-go" href="https://buy.stripe.com/aFa5kD73kan0b6Pd2R2B203"><svg class="i" aria-hidden="true"><use href="#i-down"/></svg>Buy, A$12</a>
+      <a class="more" href="/templates/#tracker">See what's inside <span class="ar" aria-hidden="true">→</span></a>
+      <p class="micro">Instant download · 14-day refund on request (<a href="/terms/">terms of sale</a>), in addition to your rights under the Australian Consumer Law.</p>
+      <p class="micro">One-off price. AUTOMAIT is not registered for GST, so no GST is charged.</p>
+    </div>
+  </div>
+</article></aside>
+</div></section>
+</main>
+<script>
+/*CALC-START*/
+function parseAmount(s){
+  s=String(s==null?'':s).replace(/[\s,]/g,'').replace(/^A?\$/i,'');
+  if(s==='')return {empty:true};
+  if(/^-/.test(s))return {error:'Enter an amount of 0 or more.'};
+  var m=/^(\d*)(?:\.(\d*))?$/.exec(s);
+  if(!m||(m[1]===''&&!m[2]))return {error:'Enter an amount in dollars and cents, like 60000 or 60,000.50.'};
+  if(m[2]&&m[2].length>2)return {error:'Use dollars and cents: no more than 2 decimal places.'};
+  var whole=m[1].replace(/^0+(?=\d)/,'');
+  if(whole.length>9)return {error:'Enter an amount under $1,000,000,000.'};
+  var dec=((m[2]||'')+'00').slice(0,2);
+  return {cents:Number(whole||'0')*100+Number(dec)};
+}
+// x * pct / 100, rounded to the nearest cent (half a cent rounds up)
+function pctOf(c,pct){return Math.floor((c*pct+50)/100);}
+// 2026-27 resident rates (ATO): 0-18,200 nil; 15c over 18,200; 4,020 + 30c over 45,000;
+// 31,020 + 37c over 135,000; 51,370 + 45c over 190,000. All amounts in cents.
+var BRACKETS=[[19000000,5137000,45],[13500000,3102000,37],[4500000,402000,30],[1820000,0,15]];
+function incomeTax(c){
+  for(var i=0;i<BRACKETS.length;i++){var b=BRACKETS[i];if(c>b[0])return b[1]+pctOf(c-b[0],b[2]);}
+  return 0;
+}
+// Low income tax offset (ATO): 700 up to 37,500; 700 - 5c per $1 over 37,500; 325 - 1.5c per $1 over 45,000; nil from 66,667
+function lito(c){
+  var o;
+  if(c<=3750000)o=70000;
+  else if(c<=4500000)o=70000-pctOf(c-3750000,5);
+  else o=32500-Math.floor((3*(c-4500000)+100)/200);
+  return o>0?o:0;
+}
+function medicare(c){return pctOf(c,2);}
+function taxOn(c){
+  var t=incomeTax(c),l=lito(c),used=Math.min(l,t),net=t-used,ml=medicare(c);
+  return {taxable:c,tax:t,lito:used,net:net,medicare:ml,total:net+ml};
+}
+function ceilDiv(a,b){return Math.floor((a+b-1)/b);}
+function estimate(profitS,wagesS,withheldS){
+  var errors={},p=parseAmount(profitS),w=parseAmount(wagesS),h=parseAmount(withheldS);
+  if(p.error)errors.profit=p.error;
+  if(w.error)errors.wages=w.error;
+  if(h.error)errors.withheld=h.error;
+  else if(!h.empty&&w.empty)errors.withheld='Enter your wages too, or leave this blank.';
+  else if(!h.empty&&!w.empty&&!w.error&&h.cents>w.cents)errors.withheld="Tax withheld can't be more than your wages.";
+  if(Object.keys(errors).length)return {ok:false,errors:errors,hasErrors:true};
+  if(p.empty)return {ok:false,errors:errors,empty:true};
+  var profit=p.cents,wages=w.empty?0:w.cents,all=taxOn(profit+wages),covered=0,basis='none';
+  if(!h.empty){covered=h.cents;basis='withheld';}
+  else if(wages>0){covered=taxOn(wages).total;basis='wages';}
+  var setAside=all.total-covered;if(setAside<0)setAside=0;
+  var r={ok:true,errors:errors,profit:profit,wages:wages,basis:basis,covered:covered,setAside:setAside,over:covered>all.total};
+  for(var k in all)r[k]=all[k];
+  // effective rate in tenths of a percent (nearest); share of profit in tenths of a percent, rounded UP
+  r.effTenths=all.taxable?Math.floor((2000*all.total+all.taxable)/(2*all.taxable)):0;
+  r.pctTenths=profit?ceilDiv(setAside*1000,profit):null;
+  r.week=ceilDiv(setAside,52);r.fortnight=ceilDiv(setAside,26);r.month=ceilDiv(setAside,12);
+  return r;
+}
+function fmtCents(c){
+  var d=String(Math.floor(c/100)).replace(/\B(?=(\d{3})+(?!\d))/g,',');
+  var r=String(c%100);if(r.length<2)r='0'+r;
+  return '$'+d+'.'+r;
+}
+function fmtPct(t){return t==null?'\u2013':Math.floor(t/10)+'.'+(t%10)+'%';}
+/*CALC-END*/
+(function(){
+  var $=function(id){return document.getElementById(id);};
+  var DASH='\u2013',MINUS='\u2212';
+  function copyText(text,st){
+    var done=function(){st.textContent='Copied';setTimeout(function(){st.textContent='';},3000);};
+    var fail=function(){st.textContent="Couldn't copy. Select the figures and copy them yourself.";};
+    if(!text){st.textContent='Nothing to copy yet.';return;}
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(done,fail);}else fail();
+  }
+  function setErr(id,msg){
+    $(id+'-e').textContent=msg||'';
+    if(msg)$(id).setAttribute('aria-invalid','true');else $(id).removeAttribute('aria-invalid');
+  }
+  var f=$('calc');if(!f)return;
+  var t1,copy1='',IDS=['q-val','q-sub','r-week','r-fn','r-month','r-pct','r-taxable','r-tax','r-lito','r-ml','r-total','r-eff','r-cov','r-set'];
+  var upd=function(){
+    var r=estimate($('profit').value,$('wages').value,$('withheld').value),e=r.errors||{};
+    $('copy1-s').textContent='';
+    setErr('profit',e.profit);setErr('wages',e.wages);setErr('withheld',e.withheld);
+    if(!r.ok){
+      $('rmsg').textContent=r.hasErrors?'Check the highlighted amount.':'Enter your expected profit to see an estimate.';
+      IDS.forEach(function(i){$(i).textContent=DASH;});
+      $('cov-row').hidden=true;$('mnote').hidden=true;$('wnote').hidden=true;
+      copy1='';clearTimeout(t1);t1=setTimeout(function(){$('live').textContent='';},600);
+      return;
+    }
+    $('rmsg').textContent='';
+    var pct=fmtPct(r.pctTenths);
+    $('q-val').textContent=fmtCents(r.setAside);
+    $('q-sub').textContent=r.pctTenths==null?'No business profit entered':'About '+pct+' of your profit, or '+fmtCents(r.week)+' a week';
+    $('r-week').textContent=fmtCents(r.week);$('r-fn').textContent=fmtCents(r.fortnight);$('r-month').textContent=fmtCents(r.month);
+    $('r-pct').textContent=pct;
+    $('r-taxable').textContent=fmtCents(r.taxable);$('r-tax').textContent=fmtCents(r.tax);
+    $('r-lito').textContent=(r.lito?MINUS:'')+fmtCents(r.lito);$('r-ml').textContent=fmtCents(r.medicare);
+    $('r-total').textContent=fmtCents(r.total);$('r-eff').textContent=fmtPct(r.effTenths);
+    $('cov-row').hidden=r.basis==='none';
+    $('cov-l').textContent=r.basis==='withheld'?'Less tax already withheld from wages':'Less tax on your wages alone (assumed withheld)';
+    $('r-cov').textContent=MINUS+fmtCents(r.covered);
+    $('r-set').textContent=fmtCents(r.setAside);
+    $('mnote').hidden=r.taxable>=4000000;
+    var wn=$('wnote');wn.hidden=r.basis==='none';
+    wn.textContent=r.over?'The tax withheld from your wages is more than this estimate, so there may be nothing extra to set aside. Your tax return works out the final figure.':
+      r.basis==='wages'?'This assumes your employer withholds enough to cover the tax on your wages, so only the extra tax from your business is set aside. Enter the tax withheld (from your payslips) for a closer figure.':
+      'Set-aside = total estimated tax minus the tax already withheld from your wages.';
+    copy1='2026-27 estimate (general information only)\nTaxable income: '+fmtCents(r.taxable)+'\nIncome tax: '+fmtCents(r.tax)+'\nLow income tax offset: '+fmtCents(r.lito)+
+      '\nMedicare levy (2%): '+fmtCents(r.medicare)+'\nTotal estimated tax: '+fmtCents(r.total)+(r.basis==='none'?'':'\n'+$('cov-l').textContent+': '+fmtCents(r.covered))+
+      '\nSet aside for the year: '+fmtCents(r.setAside)+(r.pctTenths==null?'':'\nShare of profit: '+pct)+'\nPer week: '+fmtCents(r.week)+'\nPer fortnight: '+fmtCents(r.fortnight)+'\nPer month: '+fmtCents(r.month);
+    clearTimeout(t1);
+    t1=setTimeout(function(){$('live').textContent='Set aside '+fmtCents(r.setAside)+' for the year'+(r.pctTenths==null?'':', about '+pct+' of your profit')+'. That is '+fmtCents(r.week)+' a week or '+fmtCents(r.month)+' a month. Total estimated tax '+fmtCents(r.total)+'.';},700);
+  };
+  f.addEventListener('input',upd);f.addEventListener('change',upd);
+  f.addEventListener('submit',function(e){e.preventDefault();upd();});
+  $('copy1').addEventListener('click',function(){copyText(copy1,$('copy1-s'));});
+  upd();
+})();
+</script>
+<footer class="dark">
+  <div class="w fgrid">
+    <div>
+      <a class="brand fbrand" href="/" aria-label="AUTOMAIT home"><svg class="mark" aria-hidden="true"><use href="#mk"/></svg><span class="word">AUTOM<b>AI</b>T</span></a>
+      <p>AUTOMAIT · ABN 82 801 716 831 · Australia</p>
+      <p>AUTOMAIT is not registered for GST and doesn't charge GST. Marketplaces such as Etsy may add GST at checkout.</p>
+      <p>A founder and an AI operator, working together. Questions: <a href="mailto:hello@automait.au" style="color:var(--on-ink)">hello@automait.au</a></p>
+    </div>
+    <nav aria-label="Products"><b>Shop</b><a href="/shop/">Everything we sell</a><a href="/#kit">AI Front Desk Kit</a><a href="/templates/">Templates</a><a href="/skills/">AI Operator Pack</a><a href="/#services">Setup services</a></nav>
+    <nav aria-label="More"><b>More</b><a href="/blog/">Blog</a><a href="/tools/">Free calculators</a><a href="/terms/">Terms of sale</a><a href="/privacy/">Privacy policy</a><a href="/skills/licence/">Pack licence</a><a href="mailto:hello@automait.au">Email us</a></nav>
+  </div>
+</footer>
+</body>
+</html>
