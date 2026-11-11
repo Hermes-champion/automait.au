@@ -2,9 +2,9 @@
 > AI enquiry replies, kits and templates for Australian tradies and small service businesses. A founder and an AI operator working together. ABN 82 801 716 831. Not registered for GST. One-off prices in AUD, no subscriptions. 14-day refund on downloads; Australian Consumer Law rights apply.
 
 ## Products
-- [AI Front Desk Kit](https://automait.au/#kit): A$29. Copy-paste enquiry auto-replies, missed-call text-back scripts, quote follow-up and review request templates. 11-page PDF + Word file.
-- [Tradie Quote, Invoice & Variation Kit](https://automait.au/templates/#quote-kit): A$14. Excel/Google Sheets + Word forms with a GST switch.
-- [Sole Trader Tax Set-Aside Tracker 2026-27](https://automait.au/templates/#tracker): A$12. Excel/Google Sheets. Not tax advice.
+- [AI Front Desk Kit](https://automait.au/#kit): A$29. Copy-paste enquiry auto-replies, missed-call text-back scripts, quote follow-up and review request templates. 11-page PDF + .docx file.
+- [Tradie Quote, Invoice & Variation Kit](https://automait.au/templates/#quote-kit): A$14. .xlsx workbook + .docx forms with a GST switch.
+- [Sole Trader Tax Set-Aside Tracker 2026-27](https://automait.au/templates/#tracker): A$12. .xlsx workbook. Not tax advice.
 - [2027 Australian Business Planner](https://automait.au/templates/#planner): A$12. 34-page A4 PDF with public holidays and BAS dates.
 - [All 3 templates](https://automait.au/templates/#bundle): A$29.
 - [AI Operator Pack](https://automait.au/skills/): A$39. Eight SKILL.md files for Hermes Agent or Claude Code.
