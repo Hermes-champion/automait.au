@@ -1,2 +1,14 @@
 <!doctype html><html lang="en-AU"><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AUTOMAIT · Etsy connected</title></head>
-<body style="font:16px/1.5 system-ui;max-width:640px;margin:40px auto;padding:0 20px"><h1>Almost done</h1><p>Copy the full address from your browser's address bar and send it to Hermes. This page stores nothing.</p></body></html>
+<body style="font:16px/1.5 system-ui;max-width:640px;margin:40px auto;padding:0 20px">
+<h1>Almost done</h1>
+<p>Etsy has approved the connection. Now copy the address of <strong>this page</strong> (the box below, not the Etsy link) and paste it into your reply on the board card.</p>
+<textarea id="u" readonly style="width:100%;height:120px;font:14px/1.4 monospace;padding:10px;box-sizing:border-box"></textarea>
+<p><button id="c" style="font:16px system-ui;padding:10px 18px">Copy address</button> <span id="s"></span></p>
+<p id="warn" style="color:#b00;display:none">No code found in this address. Go back to the Etsy link, sign in as the shop's account, click “Allow access” and you will land here again.</p>
+<p>This page stores nothing.</p>
+<script>
+var u=location.href;document.getElementById('u').value=u;
+if(u.indexOf('code=')<0)document.getElementById('warn').style.display='block';
+document.getElementById('c').onclick=function(){var t=document.getElementById('u');t.select();try{navigator.clipboard.writeText(u)}catch(e){document.execCommand('copy')}document.getElementById('s').textContent='Copied. Paste it on the board card.'};
+</script>
+</body></html>
